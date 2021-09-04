@@ -1,22 +1,29 @@
 <template>
   <div id="app">
-    <section id="header" :style="{ 'background-image': imagePath }">
+    <section
+      id="main-background-pages-container"
+      :style="{ 'background-image': imagePath }"
+    >
       <VueHeader :links="routes" />
+      <section id="content-wrapper">
+        <router-view />
+      </section>
     </section>
-    <section id="content-wrapper">
-      <router-view />
-    </section>
+    <section class="content pages"></section>
+    <LoginForm v-if="loginFormIsActive" />
+    <div id="test"></div>
     <footer id="footer">footer</footer>
   </div>
 </template>
 <script>
-import VueHeader from "./components/Header/VueHeader.vue";
-import { routes } from "./router/routes.js";
-import { PATHS_BACKGROUND_IMAGES } from "./store/constants/pathBackgroundForTopPartPages.js";
+import VueHeader from "@/components/Header/VueHeader.vue";
+import { routes } from "@/router/routesMainPages.js";
+import { PATHS_BACKGROUND_IMAGES } from "@/store/constants/pathBackgroundForTopPartPages.js";
+import LoginForm from "@/components/forms/LoginForm.vue";
 
 export default {
   name: "App",
-  components: { VueHeader },
+  components: { VueHeader, LoginForm },
   data() {
     return {
       routes,
@@ -26,6 +33,9 @@ export default {
   computed: {
     imagePath() {
       return PATHS_BACKGROUND_IMAGES[this.$route.name];
+    },
+    loginFormIsActive() {
+      return this.$store.state.loginForm;
     },
   },
 };
@@ -173,7 +183,7 @@ body {
   flex-direction: column;
 }
 
-#header {
+#main-background-pages-container {
   position: relative;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -191,5 +201,7 @@ body {
   color: white;
   font-size: 30px;
 }
+#test {
+  height: 3000px;
+}
 </style>
-

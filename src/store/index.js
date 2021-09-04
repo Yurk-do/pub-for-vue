@@ -4,8 +4,17 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    loginForm: false,
+  },
+  mutations: {
+    activateLoginForm(state) {
+      state.loginForm = true;
+    },
+    disactivateLoginForm(state) {
+      state.loginForm = false;
+    }
+  },
   actions: {},
   modules: {},
 });

@@ -1,34 +1,30 @@
 <template>
-  <div id="header-container">
-    <router-link class="navbar-logo-container" to="/" tag="div">
-      <img
-        src="../../assets/images/logo.png"
-        alt="logotype"
-        name="logo image"
-      />
-    </router-link>
-    <div id="navbar-container">
-      <div id="navbar-order-container">
-        <div class="btn-order btn-reservation">reservation</div>
-        <div class="btn-order btn-delivery">order for delivery</div>
-      </div>
-      <div id="navbar-links-container">
-        <router-link
-          class="navbar-link"
-          v-for="link in links"
-          :to="link.path"
-          :key="link.name"
-          tag="div"
-          >{{ link.name }}</router-link
-        >
+  <div id="header">
+    <div id="header-container">
+      <LogoLink class="navbar-logo-container" />
+      <div id="navbar-container">
+        <div id="navbar-top-side-container">
+          <div id="navbar-order-link-container">
+            <ButtonOrder :button-name="'reservation'" />
+            <ButtonOrder :button-name="'order for delivery'" />
+          </div>
+          <LoginFormLink />
+        </div>
+        <NavbarPagesLinks :links="links" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import ButtonOrder from "../buttons/ButtonOrder.vue";
+import NavbarPagesLinks from "./NavbarPagesLinks.vue";
+import LogoLink from "./LogoLink.vue";
+import LoginFormLink from "../forms/LoginFormLink.vue";
+
 export default {
   name: "VueHeader",
+  components: { ButtonOrder, NavbarPagesLinks, LogoLink, LoginFormLink },
   props: {
     links: {
       type: Array,
@@ -42,13 +38,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#header-container {
-  background: rgba(0, 0, 0, 0.3);
+#header {
   width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  height: 147px;
+}
+#header-container {
+  max-width: 1200px;
   display: flex;
   margin: 0 auto;
-  padding: 15px 40px 0px;
-  justify-content: space-around;
+  padding: 15px 20px 0px 20px;
+  justify-content: space-between;
+}
+
+#navbar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .navbar-logo-container {
@@ -64,86 +70,12 @@ export default {
   }
 }
 
-#navbar-container {
+#navbar-top-side-container {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
 }
 
-#navbar-links-container {
+#navbar-order-link-container {
   display: flex;
-}
-
-.navbar-link {
-  text-align: center;
-  margin: 20px 20px;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 700;
-  flex-shrink: 0;
-
-  &:first-child {
-    margin-left: 0;
-  }
-  &:hover {
-    color: #e2cc62;
-  }
-
-  &:before {
-    content: "";
-    display: block;
-    height: 1px; /* Высота линии */
-    background: #e2cc62; /* Цвет линии */
-    width: 0px; /* Ширина линии до наведения */
-    margin: 0 auto 10px; /* Отступ с боков по центру и снизу */
-  }
-
-  &:hover:before {
-    width: 100%; /* Ширина линии при наведении */
-    transition: ease-out 0.5s; /* Время, за которое линия расширяется при наведении */
-  }
-
-  &:after {
-    content: "";
-    display: block;
-    height: 1px; /* Высота линии */
-    background: #e2cc62; /* Цвет линии */
-    width: 0px; /* Ширина линии до наведения */
-    margin: 10px auto 0; /* Отступ с боков по центру и сверху */
-  }
-  &:hover:after {
-    width: 100%; /* Ширина линии при наведении */
-    transition: ease-out 0.5s; /* Время, за которое линия расширяется при наведении */
-  }
-
-  &.router-link-exact-active {
-    color: #e2cc62;
-  }
-}
-
-#navbar-order-container {
-  display: flex;
-  .btn-order {
-    display: block;
-    padding: 10px 40px;
-    font-size: 18px;
-    line-height: 18px;
-    font-weight: 500;
-    border: solid 3px;
-    margin-right: 15px;
-    border-radius: 5px;
-    color: #e2cc62;
-    border-color: #e2cc62;
-    background: rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-
-    &:hover {
-      background-color: #e2cc62;
-      color: #121212;
-      transform: scale(1.1, 1.1);
-      transition: all 0.6s ease;
-      opacity: 1;
-    }
-  }
 }
 </style>
