@@ -3,10 +3,32 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/database";
+
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+const firebaseConfig = {
+  apiKey: "AIzaSyA81OIuSTP4rQz-v5GROzyplzCe9UWVIAo",
+  authDomain: "pub-for-vue.firebaseapp.com",
+  projectId: "pub-for-vue",
+  storageBucket: "pub-for-vue.appspot.com",
+  messagingSenderId: "1032600888910",
+  appId: "1:1032600888910:web:7d29635269e2c89001451f",
+  measurementId: "G-2BYJM5K9VQ",
+};
+
+firebase.initializeApp(firebaseConfig);
+
+let app;
+
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      store,
+      render: (h) => h(App),
+    }).$mount("#app");
+  }
+});

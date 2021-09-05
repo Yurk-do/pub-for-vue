@@ -9,7 +9,7 @@ export default {
   name: "LogoLink",
 };
 </script>
-
+  
 <style lang="scss" scoped>
 img {
   width: 100%;

@@ -1,8 +1,12 @@
 <template>
   <div class="contacts">
     <h1>Contacts</h1>
-</div>
+    <MenuTest />
+  </div>
 </template>
-<style scoped="scss">
-
-</style>
+<script>
+export default {
+  components: {},
+};
+</script>
+<style scoped="scss"></style>

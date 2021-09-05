@@ -1,5 +1,5 @@
 import Home from "../views/Home.vue";
-import FoodMenu from "../views/FoodMenu.vue";
+import Menu from "../views/Menu.vue";
 import Specials from "../views/Specials.vue";
 import News from "../views/News.vue";
 import Events from "../views/Events.vue";
@@ -14,9 +14,9 @@ export const routes = [
     component: Home,
   },
   {
-    path: "/FoodMenu",
-    name: "Food Menu",
-    component: FoodMenu,
+    path: "/Menu",
+    name: "Food & drink menu",
+    component: Menu,
   },
   {
     path: "/Specials",
@@ -49,6 +49,3 @@ export const routes = [
     component: Contacts,
   },
 ];
-
-
-

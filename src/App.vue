@@ -11,7 +11,7 @@
     </section>
     <section class="content pages"></section>
     <LoginForm v-if="loginFormIsActive" />
-    <div id="test"></div>
+    <ExitWindow v-if="exitWindowIsActive"/>
     <footer id="footer">footer</footer>
   </div>
 </template>
@@ -20,10 +20,11 @@ import VueHeader from "@/components/Header/VueHeader.vue";
 import { routes } from "@/router/routesMainPages.js";
 import { PATHS_BACKGROUND_IMAGES } from "@/store/constants/pathBackgroundForTopPartPages.js";
 import LoginForm from "@/components/forms/LoginForm.vue";
+import ExitWindow from "@/components/forms/ExitWindow.vue"
 
 export default {
   name: "App",
-  components: { VueHeader, LoginForm },
+  components: { VueHeader, LoginForm, ExitWindow },
   data() {
     return {
       routes,
@@ -37,6 +38,9 @@ export default {
     loginFormIsActive() {
       return this.$store.state.loginForm;
     },
+    exitWindowIsActive() {
+      return this.$store.state.exitWindow;
+    }
   },
 };
 </script>

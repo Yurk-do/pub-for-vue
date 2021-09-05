@@ -5,21 +5,23 @@
     @mouseout="changeColorLoginIn"
     @click="activateLoginForm"
   >
-    <span>{{ LoginName }}</span>
+    <span :class="{ 'login-out-color': LoginOutIsActive }">{{
+      LoginStatus
+    }}</span>
     <img
       src="../../assets/images/icon-login-yellow.png"
       alt="icon"
-      v-if="LoginInHover"
+      v-if="LoginInHover && !LoginOutIsActive"
     />
     <img
       src="../../assets/images/icon-login-white.png"
       alt="icon"
-      v-if="!LoginInHover"
+      v-if="!LoginInHover && !LoginOutIsActive"
     />
     <img
       src="../../assets/images/icon-login-out.png"
       alt="icon"
-      v-if="LoginOut"
+      v-if="LoginOutIsActive"
     />
   </div>
 </template>
@@ -27,16 +29,9 @@
 <script>
 export default {
   name: "LoginFormLink",
-  props: {
-    LoginOutIsActive: {
-      type: Boolean,
-      default: false,
-    },
-  },
   data() {
     return {
       LoginInHover: false,
-      LoginOut: this.LoginOutIsActive,
     };
   },
   methods: {
@@ -44,14 +39,20 @@ export default {
       this.LoginInHover = !this.LoginInHover;
     },
     activateLoginForm() {
-      console.log(this.$store.state.loginForm);
-      this.$store.commit("activateLoginForm");
-      console.log(this.$store.state.loginForm);
+      if (!this.LoginOutIsActive) {
+        this.$store.commit("activateLoginForm");
+      } else {
+        console.log(this.$store.state.exitWindow)
+        this.$store.commit("activateExitWindow");
+      }
     },
   },
   computed: {
-    LoginName() {
-      return this.LoginOut === true ? "Login Out" : "Login In";
+    LoginStatus() {
+      return this.LoginOutIsActive === true ? "Login Out" : "Login In";
+    },
+    LoginOutIsActive() {
+      return this.$store.state.userAuth;
     },
   },
 };
@@ -67,6 +68,9 @@ export default {
   &:hover {
     color: #e2cc62;
   }
+}
+.login-out-color {
+  color: #e2cc62;
 }
 </style>
 >

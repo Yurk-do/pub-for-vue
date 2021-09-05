@@ -1,17 +1,12 @@
 <template>
   <div class="popup-container">
-    <form class="login-form-container">
+    <form class="login-form-container" @submit.prevent="submitHadler">
       <ButtonClose @close-window="disactivateLoginForm" class="btn-close" />
       <h2 class="login-form-title">Login In</h2>
       <div class="login-form-input-container">
         <div class="input-box">
-          <label for="user-first-name">Your Login:</label>
-          <input
-            type="text"
-            name="user-login-name"
-            id="user-login-name"
-            required
-          />
+          <label for="email">Your Email:</label>
+          <input type="text" name="email" id="email" required v-model="email" />
         </div>
         <div class="input-box">
           <label for="user-last-name">Your Password:</label>
@@ -20,10 +15,11 @@
             name="user-password"
             id="user-password"
             required
+            v-model="password"
           />
         </div>
         <div class="button-container">
-          <ButtonForm />
+          <ButtonForm type="submit" />
           <ButtonForm :is-cancel="true" />
         </div>
       </div>
@@ -38,11 +34,28 @@ export default {
   name: "LoginForm",
   components: { ButtonClose, ButtonForm },
   data() {
-    return {};
+    return {
+      email: "",
+      password: "",
+    };
   },
   methods: {
     disactivateLoginForm() {
       this.$store.commit("disactivateLoginForm");
+    },
+    async submitHadler() {
+      const formData = {
+        email: this.email,
+        password: this.password,
+      };
+
+      try {
+        await this.$store.dispatch("login", formData);
+        this.$store.commit("changUserStatusAuth");
+        this.$store.commit("disactivateLoginForm");
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };

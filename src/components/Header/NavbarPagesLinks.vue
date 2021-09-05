@@ -31,8 +31,9 @@ export default {
     text-align: center;
     margin: 20px 20px;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 600;
     flex-shrink: 0;
 
     &:first-child {
