@@ -1,19 +1,20 @@
 <template>
-  <button class="btn-form" :class="{ cancel: isCancel }">{{ buttonName }}</button>
+  <button class="btn-form" :class="{ cancel: isCancel }" @click="$emit('button-click')">
+    {{ buttonName }}
+  </button>
 </template>
 
 <script>
 export default {
-  name: "ButtonForm",
   props: {
+    buttonName: {
+      type: String,
+      required: true,
+      default: "button",
+    },
     isCancel: {
       type: Boolean,
       default: false,
-    },
-  },
-  computed: {
-    buttonName() {
-      return this.isCancel === true ? "clear" : "submit";
     },
   },
 };
@@ -41,12 +42,12 @@ export default {
     opacity: 1;
   }
 }
- .cancel {
-     border-color: rgb(148, 36, 36);
-    &:hover {
-      color: white;
-      background-color: rgb(148, 36, 36);
-    }
+.cancel {
+  border-color: rgb(148, 36, 36);
+  &:hover {
+    color: white;
+    background-color: rgb(148, 36, 36);
   }
+}
 </style>
 >

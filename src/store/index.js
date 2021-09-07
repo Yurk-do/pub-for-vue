@@ -9,22 +9,16 @@ export default new Vuex.Store({
     loginForm: false,
     userAuth: false,
     exitWindow: false,
-  },
+},
   mutations: {
-    activateLoginForm(state) {
-      state.loginForm = true;
-    },
-    disactivateLoginForm(state) {
-      state.loginForm = false;
+    changeStatusLoginForm(state) {
+      state.loginForm = !state.loginForm;
     },
     changUserStatusAuth(state) {
       state.userAuth = !state.userAuth;
     },
-    activateExitWindow(state) {
-      state.exitWindow = true;
-    },
-    disactivateExitWindow(state) {
-      state.exitWindow = false;
+    changeStatusExitWindow(state) {
+      state.exitWindow = !state.exitWindow;
     },
   },
   actions: {},

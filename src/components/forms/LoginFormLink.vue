@@ -40,10 +40,10 @@ export default {
     },
     activateLoginForm() {
       if (!this.LoginOutIsActive) {
-        this.$store.commit("activateLoginForm");
+        this.$store.commit("changeStatusLoginForm");
       } else {
         console.log(this.$store.state.exitWindow)
-        this.$store.commit("activateExitWindow");
+        this.$store.commit("changeStatusExitWindow");
       }
     },
   },

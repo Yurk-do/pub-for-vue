@@ -1,13 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Menu from "../views/Menu.vue";
-import Specials from "../views/Specials.vue";
-import News from "../views/News.vue";
-import Events from "../views/Events.vue";
-import GiftCards from "../views/GiftCards.vue";
-import FAQ from "../views/FAQ.vue";
-import Contacts from "../views/Contacts.vue";
 
 Vue.use(VueRouter);
 
@@ -18,54 +11,44 @@ const routes = [
     component: Home,
   },
   {
-    path: "/Menu",
+    path: "/menu",
     name: "Menu",
-    component: Menu,
-    // children: [
-    //   {
-    //     path: "boottles-cans",
-    //     name: "boottles & cans",
-    //     component: MenuBoottles,
-    //   },
-    //   { path: "drafts", name: "Drafts", component: MenuDrafts },
-    //   { path: "food", name: "Food", component: MenuFood },
-    //   { path: "spirits", name: "Spirits", component: MenuSpirits },
-    //   {
-    //     path: "wine-coctails",
-    //     name: "Wine & Coctails",
-    //     component: MenuWineCoctails,
-    //   },
-    // ],
+    component: () => import("../views/Menu.vue"),
   },
   {
-    path: "/Specials",
+    path: "/specials",
     name: "Specials",
-    component: Specials,
+    component: () => import("../views/Specials.vue"),
   },
   {
-    path: "/News",
+    path: "/news",
     name: "What's new",
-    component: News,
+    component: () => import("../views/News.vue"),
   },
   {
-    path: "/Events",
+    path: "/events",
     name: "Events",
-    component: Events,
+    component: () => import("../views/Events.vue"),
   },
   {
-    path: "/GiftCards",
+    path: "/giftCards",
     name: "Gift Cards",
-    component: GiftCards,
+    component: () => import("../views/GiftCards.vue"),
   },
   {
-    path: "/FAQ",
-    name: "FAQ",
-    component: FAQ,
+    path: "/faq",
+    name: "FAq",
+    component: () => import("../views/FAQ.vue"),
   },
   {
-    path: "/Contacts",
+    path: "/contacts",
     name: "Contacts",
-    component: Contacts,
+    component: () => import("../views/Contacts.vue"),
+  },
+  {
+    path: "/registration",
+    name: "Registration",
+    component: () => import("../views/Registration.vue"),
   },
 ];
 

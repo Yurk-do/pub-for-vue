@@ -1,6 +1,10 @@
 <template>
-  <div class="btn-close" @click="disactivateWindow">
-    <img src="../../assets/icons/icons8-multiply-50.png" alt="icon" />
+  <div class="btn-close">
+    <img
+      src="../../assets/icons/icons8-multiply-50.png"
+      alt="icon"
+      @click="disactivateWindow"
+    />
   </div>
 </template>
 

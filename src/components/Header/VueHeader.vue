@@ -9,6 +9,7 @@
             <ButtonOrder :button-name="'order for delivery'" />
           </div>
           <LoginFormLink />
+          <ExitWindow v-if="exitWindowIsActive" />
         </div>
         <NavbarPagesLinks :links="links" />
       </div>
@@ -21,10 +22,17 @@ import ButtonOrder from "../buttons/ButtonOrder.vue";
 import NavbarPagesLinks from "./NavbarPagesLinks.vue";
 import LogoLink from "./LogoLink.vue";
 import LoginFormLink from "../forms/LoginFormLink.vue";
+import ExitWindow from "@/components/modalWindows/ExitWindow.vue";
 
 export default {
   name: "VueHeader",
-  components: { ButtonOrder, NavbarPagesLinks, LogoLink, LoginFormLink },
+  components: {
+    ButtonOrder,
+    NavbarPagesLinks,
+    LogoLink,
+    LoginFormLink,
+    ExitWindow,
+  },
   props: {
     links: {
       type: Array,
@@ -34,11 +42,17 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    exitWindowIsActive() {
+      return this.$store.state.exitWindow;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 #header {
+  position: relative;
   width: 100%;
   background: rgba(0, 0, 0, 0.3);
   height: 147px;

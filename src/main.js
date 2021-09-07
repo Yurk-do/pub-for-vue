@@ -3,6 +3,11 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/database";
@@ -22,6 +27,10 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 let app;
+
+
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 
 firebase.auth().onAuthStateChanged(() => {
   if (!app) {
