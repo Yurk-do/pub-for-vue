@@ -10,6 +10,7 @@
           </div>
           <LoginFormLink />
           <ExitWindow v-if="exitWindowIsActive" />
+          <ErrorWindow v-if="errorWindowisActive"  />
         </div>
         <NavbarPagesLinks :links="links" />
       </div>
@@ -23,6 +24,7 @@ import NavbarPagesLinks from "./NavbarPagesLinks.vue";
 import LogoLink from "./LogoLink.vue";
 import LoginFormLink from "../forms/LoginFormLink.vue";
 import ExitWindow from "@/components/modalWindows/ExitWindow.vue";
+import ErrorWindow from "@/components/modalWindows/ErrorWindow.vue";
 
 export default {
   name: "VueHeader",
@@ -32,6 +34,7 @@ export default {
     LogoLink,
     LoginFormLink,
     ExitWindow,
+    ErrorWindow,
   },
   props: {
     links: {
@@ -45,6 +48,20 @@ export default {
   computed: {
     exitWindowIsActive() {
       return this.$store.state.exitWindow;
+    },
+    errorWindowisActive() {
+      if (this.error !== null) return true;
+      else {
+        return false;
+      }
+    },
+    error() {
+      return this.$store.getters.error;
+    },
+  },
+  watch: {
+    error(fbError) {
+      console.log(fbError.code);
     },
   },
 };

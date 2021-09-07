@@ -18,8 +18,7 @@ export default {
   components: { ButtonClose, ButtonForm },
   methods: {
     async confirmExit() {
-      this.$store.commit("changUserStatusAuth");
-      this.$store.commit("changeStatusExitWindow");
+      await this.$store.dispath.logout;
     },
     canselExit() {
       this.$store.commit("changeStatusExitWindow");

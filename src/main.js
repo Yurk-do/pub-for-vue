@@ -3,10 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
@@ -26,18 +26,11 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-let app;
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
-
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
-
-firebase.auth().onAuthStateChanged(() => {
-  if (!app) {
-    app = new Vue({
-      router,
-      store,
-      render: (h) => h(App),
-    }).$mount("#app");
-  }
-});
+new Vue({
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount("#app");

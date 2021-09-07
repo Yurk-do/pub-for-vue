@@ -64,14 +64,8 @@ export default {
         email: this.email,
         password: this.password,
       };
-      console.log(formData);
-      console.log(this.email);
-
-
       try {
         await this.$store.dispatch("login", formData);
-        this.$store.commit("changUserStatusAuth");
-        this.$store.commit("changeStatusLoginForm");
       } catch (e) {
         console.error(e);
       }

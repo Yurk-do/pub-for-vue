@@ -52,7 +52,7 @@ export default {
     ButtonForm,
   },
   methods: {
-    submitHandler() {
+    async submitHandler() {
       const formData = {
         firstName: this.formData.firstName,
         lastName: this.formData.lastName,
@@ -64,9 +64,16 @@ export default {
         password: this.formData.password,
         repeatPassword: this.formData.repeatPassword,
       };
-      this.$router.push("/")
+      this.$router.push("/");
       console.log(formData);
+
+      try {
+        await this.$store.dispatch("register", formData);
+      } catch (e) {
+        console.log(e);
+      }
     },
+
     addInputData(inputData) {
       this.formData = { ...this.formData, ...inputData };
     },
