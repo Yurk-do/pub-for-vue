@@ -1,6 +1,6 @@
 <template>
-  <b-row class="d-flex justify-content-center">
-    <b-col class="col-md-3">
+  <b-row>
+    <b-col class="col-8">
       <b-form-group
         id="input-group-first-name"
         label="First Name:"
@@ -11,11 +11,12 @@
           placeholder="Type your first name"
           required
           type="text"
-          @input="inputFirstName"
+          @input="inputNames"
+          v-model="userNamesData.firstName"
         ></b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-md-3">
+    <b-col class="col-8" v-if="lastNameActivated">
       <b-form-group
         id="input-group-last-name"
         label="Last Name:"
@@ -26,7 +27,8 @@
           placeholder="Type your first name"
           required
           type="text"
-          @input="inputLastName"
+          @input="inputNames"
+          v-model="userNamesData.lastName"
         ></b-form-input>
       </b-form-group>
     </b-col>
@@ -36,6 +38,12 @@
 <script>
 export default {
   name: "UserNamesSection",
+  props: {
+    lastNameActivated: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     userNamesData: {
       firstName: "",
@@ -43,12 +51,7 @@ export default {
     },
   }),
   methods: {
-    inputFirstName(event) {
-      this.userNamesData.firstName = event;
-      this.$emit("input-user-names", this.userNamesData);
-    },
-    inputLastName(event) {
-      this.userNamesData.lastName = event;
+    inputNames() {
       this.$emit("input-user-names", this.userNamesData);
     },
   },

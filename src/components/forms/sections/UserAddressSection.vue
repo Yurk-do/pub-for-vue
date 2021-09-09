@@ -1,25 +1,38 @@
 <template>
-  <b-row class="d-flex justify-content-center">
-    <b-col class="col-4 col-md-4">
+  <b-row>
+    <b-col>
       <b-form-group id="input-group-street" label="Street:" label-for="street">
         <b-form-input
           id="street"
           type="text"
           required
           placeholder="Type your street"
-          @input="inputStreet"
+          v-model="userAddressData.street"
+          @input="inputAdddress"
         ></b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-md-1">
+    <b-col class="col-md-2">
       <b-form-group id="input-group-house" label="House:" label-for="street">
-        <b-form-input id="house" type="text" required @input="inputHouse">
+        <b-form-input
+          id="house"
+          type="text"
+          required
+          @input="inputAdddress"
+          v-model="userAddressData.house"
+        >
         </b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-md-1">
+    <b-col class="col-md-2">
       <b-form-group id="input-group-flat" label="Flat:" label-for="flat">
-        <b-form-input id="flat" type="text" required @input="inputFlat">
+        <b-form-input
+          id="flat"
+          type="text"
+          required
+          @input="inputAdddress"
+          v-model="userAddressData.flat"
+        >
         </b-form-input>
       </b-form-group>
     </b-col>
@@ -37,16 +50,7 @@ export default {
     },
   }),
   methods: {
-    inputStreet(event) {
-      this.userAddressData.street = event;
-      this.$emit("input-user-address", this.userAddressData);
-    },
-    inputHouse(event) {
-      this.userAddressData.house = event;
-      this.$emit("input-user-address", this.userAddressData);
-    },
-    inputFlat(event) {
-      this.userAddressData.flat = event;
+    inputAdddress() {
       this.$emit("input-user-address", this.userAddressData);
     },
   },

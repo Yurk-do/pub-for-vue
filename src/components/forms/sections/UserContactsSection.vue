@@ -1,25 +1,27 @@
 <template>
-  <b-row class="d-flex justify-content-center">
-    <b-col class="col-md-3">
+  <b-row>
+    <b-col class="col-8">
       <b-form-group id="input-group-phone" label="Phone:" label-for="phone">
         <b-form-input
           id="phone"
           type="tel"
           required
           placeholder="Type yiur phone number"
-          @input="inputPhone"
+          @input="inputContacts"
+          v-model="userContactsData.phone"
         >
         </b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-md-3">
+    <b-col class="col-8" v-if="emailActivated">
       <b-form-group id="input-group-email" label="Email" label-for="email">
         <b-form-input
           id="email"
           type="email"
           required
           placeholder="Type your email"
-          @input="inputEmail"
+          @input="inputContacts"
+          v-model="userContactsData.email"
         >
         </b-form-input>
       </b-form-group>
@@ -30,19 +32,20 @@
 <script>
 export default {
   name: "UserContactsSection",
+  props: {
+    emailActivated: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({
     userContactsData: {
       phone: "",
       email: "",
-    }
+    },
   }),
   methods: {
-    inputPhone(event) {
-      this.userContactsData.phone = event;
-      this.$emit("input-user-contacts", this.userContactsData);
-    },
-    inputEmail(event) {
-      this.userContactsData.email = event;
+    inputContacts() {
       this.$emit("input-user-contacts", this.userContactsData);
     },
   },

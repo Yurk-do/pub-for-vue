@@ -1,11 +1,11 @@
 <template>
-  <div class="btn-close">
-    <img
-      src="../../assets/icons/icons8-multiply-50.png"
-      alt="icon"
-      @click="disactivateWindow"
-    />
-  </div>
+  <b-icon
+    icon="x"
+    scale="4"
+    variant="white"
+    id="icon"
+    @click="disactivateWindow"
+  ></b-icon>
 </template>
 
 <script>
@@ -21,10 +21,11 @@ export default {
 </script>
 
 <style lang="scss">
-.btn-close {
-  img:hover {
+#icon {
+  opacity: 1;
+  &:hover {
     transform: scale(1.3, 1.3);
-    transition: 2s;
+    transition: 1s;
     cursor: pointer;
   }
 }

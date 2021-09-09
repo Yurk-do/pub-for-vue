@@ -1,6 +1,6 @@
 <template>
-  <b-row class="d-flex flex-row justify-content-center">
-    <b-col class="col-md-3">
+  <b-row>
+    <b-col>
       <b-form-group
         id="input-group-password"
         label="Password"
@@ -12,10 +12,11 @@
           required
           placeholder="Type your password"
           @input="inputPassword"
+          v-model="userPasswordData.password"
         >
         </b-form-input></b-form-group
     ></b-col>
-    <b-col class="col-md-3"
+    <b-col v-if="confirmPasswordActivated"
       ><b-form-group
         id="input-group-confirm-password"
         label="Confirm password:"
@@ -25,8 +26,9 @@
           id="confirm-password"
           type="password"
           required
-          @input="inputRepeatPassword"
           placeholder="Repeat your password"
+          @input="inputPassword"
+          v-model="userPasswordData.repeatPassword"
         >
         </b-form-input></b-form-group
     ></b-col>
@@ -35,6 +37,10 @@
 
 <script>
 export default {
+  name: "UserPasswordSection",
+  props: {
+    confirmPasswordActivated: { type: Boolean, default: false },
+  },
   data: () => ({
     userPasswordData: {
       password: "",
@@ -42,12 +48,7 @@ export default {
     },
   }),
   methods: {
-    inputPassword(event) {
-      this.userPasswordData.password = event;
-      this.$emit("input-user-password", this.userPasswordData);
-    },
-    inputRepeatPassword(event) {
-      this.userPasswordData.repeatPassword = event;
+    inputPassword() {
       this.$emit("input-user-password", this.userPasswordData);
     },
   },

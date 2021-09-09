@@ -5,23 +5,23 @@
     @mouseout="changeColorLoginIn"
     @click="activateLoginForm"
   >
-    <span :class="{ 'login-out-color': LoginOutIsActive }">{{
+    <span :class="{ 'login-out-color': LoginInIsActive }">{{
       LoginStatus
     }}</span>
     <img
-      src="../../assets/images/icon-login-yellow.png"
+      src="../../../assets/images/icon-login-yellow.png"
       alt="icon"
-      v-if="LoginInHover && !LoginOutIsActive"
+      v-if="LoginInHover && !LoginInIsActive"
     />
     <img
-      src="../../assets/images/icon-login-white.png"
+      src="../../../assets/images/icon-login-white.png"
       alt="icon"
-      v-if="!LoginInHover && !LoginOutIsActive"
+      v-if="!LoginInHover && !LoginInIsActive"
     />
     <img
-      src="../../assets/images/icon-login-out.png"
+      src="../../../assets/images/icon-login-out.png"
       alt="icon"
-      v-if="LoginOutIsActive"
+      v-if="LoginInIsActive"
     />
   </div>
 </template>
@@ -39,20 +39,19 @@ export default {
       this.LoginInHover = !this.LoginInHover;
     },
     activateLoginForm() {
-      if (!this.LoginOutIsActive) {
-        this.$store.commit("changeStatusLoginForm");
-      } else {
-        console.log(this.$store.state.exitWindow)
-        this.$store.commit("changeStatusExitWindow");
+     if (!this.LoginInIsActive) {
+       this.$store.commit("changeStatusLoginFormWindow");
+        } else {
+       this.$store.commit("changeStatusConfirmWindow");
       }
     },
   },
   computed: {
     LoginStatus() {
-      return this.LoginOutIsActive === true ? "Login Out" : "Login In";
+      return this.LoginInIsActive === true ? "Login Out" : "Login In";
     },
-    LoginOutIsActive() {
-      return this.$store.state.userAuth;
+    LoginInIsActive() {
+      return this.$store.getters.getStatusUserAuth;
     },
   },
 };

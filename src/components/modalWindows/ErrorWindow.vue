@@ -7,7 +7,7 @@
 import PopupContainer from "@/components/modalWindows/PopupContainer.vue";
 export default {
   name: "ErrorWindow",
- components: {
+  components: {
     PopupContainer,
   },
 };

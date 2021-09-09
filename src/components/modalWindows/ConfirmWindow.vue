@@ -1,10 +1,10 @@
 <template>
-  <div class="exit-window-container">
-    <ButtonClose @close-window="canselExit" class="btn-close" />
-    <p class="exit-window-title">Are you sure?</p>
+  <div class="confirm-window-container">
+    <ButtonClose @close-window="closeWindow" class="btn-close" />
+    <p class="confirm-window-title">Are you sure? {{name}}</p>
     <div class="btns-container">
       <ButtonForm :buttonName="'Yes'" @button-click="confirmExit" />
-      <ButtonForm :buttonName="'No'" is-cancel @button-click="canselExit" />
+      <ButtonForm :buttonName="'No'" is-cancel @button-click="closeWindow" />
     </div>
   </div>
 </template>
@@ -14,22 +14,26 @@ import ButtonClose from "@/components/buttons/ButtonClose.vue";
 import ButtonForm from "@/components/buttons/ButtonForm.vue";
 
 export default {
-  name: "ExitWindow",
+  name: "ConfirmWindow",
   components: { ButtonClose, ButtonForm },
+  computed: {
+    name() {
+      return this.$store.getters.info.firstName;
+    }
+  },
   methods: {
     async confirmExit() {
-      await this.$store.dispath.logout;
+      await this.$store.dispatch("logout");
     },
-    canselExit() {
-      this.$store.commit("changeStatusExitWindow");
-      console.log("exitWindow2", this.$store.state.exitWindow);
+    closeWindow() {
+      this.$store.commit("changeStatusConfirmWindow");
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.exit-window-container {
+.confirm-window-container {
   background: rgb(70, 43, 43);
   color: white;
   width: 300px;

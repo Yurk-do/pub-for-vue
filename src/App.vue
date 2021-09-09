@@ -15,10 +15,10 @@
   </div>
 </template>
 <script>
-import VueHeader from "@/components/Header/VueHeader.vue";
+import VueHeader from "@/components/header/VueHeader.vue";
 import { routesMainPages } from "@/store/constants/routesMainPages.js";
 import { PATHS_BACKGROUND_IMAGES } from "@/store/constants/pathBackgroundForTopPartPages.js";
-import LoginForm from "@/components/forms/LoginForm.vue";
+import LoginForm from "@/components/forms/login/LoginForm.vue";
 
 export default {
   name: "App",
@@ -29,12 +29,28 @@ export default {
       PATHS_BACKGROUND_IMAGES,
     };
   },
+  async mounted() {
+    await this.$store.dispatch("checkStatusUserAuth");
+    if (
+      this.$store.getters.getStatusUserAuth &&
+      !Object.keys(this.$store.getters.info).length
+    ) {
+      await this.$store.dispatch("fetchInfo");
+    }
+  },
+  //   async mounted() {
+  //   if (!Object.keys(this.$store.getters.info).length)
+  //   const userStatus = await this.$store.dispatch("checkStatusUserAuth");
+  //   if (!userStatus) {
+  //     await this.$store.dispatch("fetchInfo")
+  //   }
+  // },
   computed: {
     imagePath() {
       return PATHS_BACKGROUND_IMAGES[this.$route.name];
     },
     loginFormIsActive() {
-      return this.$store.state.loginForm;
+      return this.$store.getters.getStatusLoginForm;
     },
   },
 };

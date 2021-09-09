@@ -6,11 +6,13 @@
         <div id="navbar-top-side-container">
           <div id="navbar-order-link-container">
             <ButtonOrder :button-name="'reservation'" />
-            <ButtonOrder :button-name="'order for delivery'" />
+            <router-link to="/delivery" tag="div">
+              <ButtonOrder :button-name="'order for delivery'" />
+            </router-link>
           </div>
           <LoginFormLink />
-          <ExitWindow v-if="exitWindowIsActive" />
-          <ErrorWindow v-if="errorWindowisActive"  />
+          <ConfirmWindow v-if="confirmWindowIsActive" />
+          <ErrorWindow v-if="errorWindowisActive" />
         </div>
         <NavbarPagesLinks :links="links" />
       </div>
@@ -19,11 +21,11 @@
 </template>
 
 <script>
-import ButtonOrder from "../buttons/ButtonOrder.vue";
-import NavbarPagesLinks from "./NavbarPagesLinks.vue";
-import LogoLink from "./LogoLink.vue";
-import LoginFormLink from "../forms/LoginFormLink.vue";
-import ExitWindow from "@/components/modalWindows/ExitWindow.vue";
+import ButtonOrder from "@/components/buttons/ButtonOrder.vue";
+import NavbarPagesLinks from "@/components/header/NavbarPagesLinks.vue";
+import LogoLink from "@/components/header/LogoLink.vue";
+import LoginFormLink from "@/components/forms/login/LoginFormLink.vue";
+import ConfirmWindow from "@/components/modalWindows/ConfirmWindow.vue";
 import ErrorWindow from "@/components/modalWindows/ErrorWindow.vue";
 
 export default {
@@ -33,7 +35,7 @@ export default {
     NavbarPagesLinks,
     LogoLink,
     LoginFormLink,
-    ExitWindow,
+    ConfirmWindow,
     ErrorWindow,
   },
   props: {
@@ -46,8 +48,8 @@ export default {
     return {};
   },
   computed: {
-    exitWindowIsActive() {
-      return this.$store.state.exitWindow;
+    confirmWindowIsActive() {
+      return this.$store.getters.getStatusConfirmWindow;
     },
     errorWindowisActive() {
       if (this.error !== null) return true;

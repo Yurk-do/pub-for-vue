@@ -50,6 +50,11 @@ const routes = [
     name: "Registration",
     component: () => import("../views/Registration.vue"),
   },
+  {
+    path: "/delivery",
+    name: "Order for delivery",
+    component: () => import("../views/Delivery.vue"),
+  },
 ];
 
 const router = new VueRouter({

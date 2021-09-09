@@ -1,37 +1,47 @@
 <template>
-  <div>
-    <h2 class="name-page">Registration</h2>
-    <b-form @submit.prevent="submitHandler" class="d-flex flex-column">
-      <UserNamesSection @input-user-names="addInputData" class="form-section" />
-      <UserAddressSection
-        @input-user-address="addInputData"
-        class="form-section"
-      />
-      <UserContactsSection
-        @input-user-contacts="addInputData"
-        class="form-section"
-      />
-      <UserPasswordSection
-        @input-user-password="addInputData"
-        class="form-section"
-      />
-      <b-col class="d-flex justify-content-center">
-        <ButtonForm :button-name="'submit'" class="col-2" />
-        <ButtonForm :button-name="'clear'" is-cancel class="col-2" />
-      </b-col>
-    </b-form>
-  </div>
+  <b-container>
+    <b-container>
+      <h2 class="name-page">Registration</h2>
+      <b-form @submit.prevent="submitHandler">
+        <UserNamesSection
+          @input-user-names="addInputData"
+          class="form-section"
+          last-name-activated
+          :user-names-data="userNamesData"
+        />
+        <UserAddressSection
+          @input-user-address="addInputData"
+          class="form-section"
+        />
+        <UserContactsSection
+          @input-user-contacts="addInputData"
+          class="form-section"
+          email-activated
+        />
+        <UserPasswordSection
+          @input-user-password="addInputData"
+          class="form-section"
+        />
+        <b-col class="d-flex justify-content-center">
+          <ButtonForm :button-name="'submit'" class="col-2" />
+          <ButtonForm :button-name="'clear'" is-cancel class="col-2" />
+        </b-col>
+      </b-form>
+      <button @click="test">Test</button>
+    </b-container>
+  </b-container>
 </template>
 <script>
-import UserNamesSection from "@/components/forms/UserNamesSection.vue";
-import UserAddressSection from "@/components/forms/UserAddressSection.vue";
-import UserContactsSection from "@/components/forms/UserContactsSection.vue";
-import UserPasswordSection from "@/components/forms/UserPasswordSection.vue";
+import UserNamesSection from "@/components/forms/sections/UserNamesSection.vue";
+import UserAddressSection from "@/components/forms/sections/UserAddressSection.vue";
+import UserContactsSection from "@/components/forms/sections/UserContactsSection.vue";
+import UserPasswordSection from "@/components/forms/sections/UserPasswordSection.vue";
 import ButtonForm from "@/components/buttons/ButtonForm.vue";
 
 export default {
   name: "Registration",
   data: () => ({
+    userNamesData: "",
     formData: {
       firstName: "",
       lastName: "",
@@ -52,21 +62,13 @@ export default {
     ButtonForm,
   },
   methods: {
+    test() {
+      console.log(this.userNamesData);
+    },
     async submitHandler() {
-      const formData = {
-        firstName: this.formData.firstName,
-        lastName: this.formData.lastName,
-        street: this.formData.street,
-        house: this.formData.house,
-        flat: this.formData.flat,
-        phone: this.formData.phone,
-        email: this.formData.email,
-        password: this.formData.password,
-        repeatPassword: this.formData.repeatPassword,
-      };
+      const formData = { ...this.formData };
       this.$router.push("/");
       console.log(formData);
-
       try {
         await this.$store.dispatch("register", formData);
       } catch (e) {

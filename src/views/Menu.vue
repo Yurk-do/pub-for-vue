@@ -19,9 +19,9 @@
   </div>
 </template>
 <script>
-import MenuItem from "@/components/Menu/MenuItem.vue";
-import ItemMenuBox from "@/components/Menu/ItemMenuBox.vue";
-import MenuLinks from "@/components/Menu/MenuLinks.vue";
+import MenuItem from "@/components/menuFoodDrinks/MenuItem.vue";
+import ItemMenuBox from "@/components/menuFoodDrinks/ItemMenuBox.vue";
+import MenuLinks from "@/components/menuFoodDrinks/MenuLinks.vue";
 
 export default {
   name: "FoodMenu",

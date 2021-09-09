@@ -1,7 +1,7 @@
 <template>
   <PopupContainer>
     <form class="login-form-container" @submit.prevent="submitHandler">
-      <ButtonClose @close-window="disactivateLoginForm" class="btn-close" />
+      <ButtonClose @close-window="disactivateLoginFormWindow" class="btn-close" />
       <h2 class="login-form-title">Login In</h2>
       <div class="login-form-input-container">
         <div class="input-box">
@@ -19,14 +19,14 @@
           />
         </div>
         <div class="button-container">
-          <ButtonForm type="submit" :buttonName="'Submit'" />
+          <ButtonForm :buttonName="'Submit'" />
           <ButtonForm
             is-cancel
             :buttonName="'Clear'"
             @button-click="clearInput"
           />
         </div>
-        <div class="registration-link-container" @click="disactivateLoginForm">
+        <div class="registration-link-container" @click="disactivateLoginFormWindow">
           <p>Not registered? Let do it now!</p>
           <router-link tag="p" to="/registration" class="registration-link"
             >Click here!</router-link
@@ -52,8 +52,8 @@ export default {
     };
   },
   methods: {
-    disactivateLoginForm() {
-      this.$store.commit("changeStatusLoginForm");
+    disactivateLoginFormWindow() {
+      this.$store.commit("changeStatusLoginFormWindow");
     },
     clearInput() {
       this.email = "";
@@ -76,15 +76,18 @@ export default {
 
 <style lang="scss" scoped>
 .login-form-container {
+  position: relative;
   width: 400px;
-  height: 500px;
-  background-color: rgb(70, 43, 43);
+  height: 550px;
+  background-color: rgb(24, 24, 24);
   box-shadow: -1px 3px 36px 21px rgba(146, 86, 30, 0.44);
   -webkit-box-shadow: -1px 3px 36px 21px rgba(146, 86, 30, 0.44);
   -moz-box-shadow: -1px 3px 36px 21px rgba(146, 86, 30, 0.44);
 
   .btn-close {
-    padding-left: 88%;
+    position: absolute;
+    top: 15px;
+    right: 15px;
   }
 
   h2 {
@@ -92,7 +95,8 @@ export default {
     font-size: 40px;
     color: white;
     letter-spacing: 5px;
-    margin-bottom: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
     font-weight: bold;
   }
 }
@@ -108,7 +112,7 @@ export default {
     margin-bottom: 50px;
 
     input {
-      margin-top: 10px;
+      margin-top: 5px;
       color: white;
       width: 100%;
       border: 2px solid white;
@@ -120,10 +124,13 @@ export default {
     }
 
     label {
-      padding-bottom: 10px;
+      padding-bottom: 5px;
       color: white;
       font-size: 20px;
     }
+  }
+  .button-container {
+    margin-top: 20px;
   }
   .registration-link-container {
     text-align: center;
@@ -141,6 +148,7 @@ export default {
 
     &:hover {
       transform: scale(1.3, 1.3);
+      transition: 1s;
     }
   }
 }

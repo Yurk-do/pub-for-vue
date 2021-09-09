@@ -1,0 +1,101 @@
+<template>
+  <div>
+    <h2 class="name-page">Delivery</h2>
+    <b-container class="d-flex">
+      <b-container class="d-flex flex-row justify-content-between h-100">
+        <b-form @submit.prevent="submitHandler">
+          <UserNamesSection @input-user-names="addInputData" @focus="test" />
+          <UserAddressSection
+            @input-user-address="addInputData"
+            class="form-section"
+          />
+          <UserContactsSection
+            @input-user-contacts="addInputData"
+            class="form-section"
+          />
+          <DateTimeOrderSection @input-date-time="addInputData" />
+          <b-col class="d-flex justify-content-end">
+            <ButtonForm :button-name="'submit'" class="col-4" />
+            <ButtonForm :button-name="'clear'" is-cancel class="col-4" />
+          </b-col>
+        </b-form>
+      </b-container>
+      <b-container class="items-for-order-container"> </b-container>
+    </b-container>
+  </div>
+</template>
+<script>
+import UserNamesSection from "@/components/forms/sections/UserNamesSection.vue";
+import UserAddressSection from "@/components/forms/sections/UserAddressSection.vue";
+import UserContactsSection from "@/components/forms/sections/UserContactsSection.vue";
+import DateTimeOrderSection from "@/components/forms/sections/DateTimeOrderSection.vue";
+import ButtonForm from "@/components/buttons/ButtonForm.vue";
+
+export default {
+  name: "Delivery",
+  data: () => ({
+    formData: {
+      ...this.$store.state.formData
+    },
+  }),
+  async mounted() {
+    try {
+      this.$store.dispatch("getUserData");
+      console.log(this.$store.userData);
+    } catch (e) {
+      console.error(e);
+    }
+  },
+  components: {
+    UserNamesSection,
+    UserAddressSection,
+    UserContactsSection,
+    ButtonForm,
+    DateTimeOrderSection,
+  },
+  methods: {
+    async submitHandler() {
+      const formData = {
+        firstName: this.formData.firstName,
+        street: this.formData.street,
+        house: this.formData.house,
+        flat: this.formData.flat,
+        phone: this.formData.phone,
+        date: this.formData.date,
+        time: this.formData.time,
+      };
+      this.$router.push("/");
+      console.log(formData);
+
+      try {
+        await this.$store.dispatch("register", formData);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    test(event) {
+      console.log(event.target)
+    },
+
+    addInputData(inputData) {
+      this.formData = { ...this.formData, ...inputData };
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.name-page {
+  margin: 30px 0px;
+  text-align: center;
+}
+.btns-section {
+  margin-top: 20px;
+  width: 300px;
+}
+.items-for-order-container {
+  width: 100%;
+  height: 50vh;
+  background-color: white;
+}
+</style>

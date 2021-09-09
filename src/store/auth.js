@@ -1,18 +1,29 @@
 import firebase from "@firebase/app-compat";
 
 export default {
+  state: () => ({
+    userAuth: false,
+  }),
+
+  mutations: {
+    changUserStatusAuth(state) {
+      state.userAuth = !state.userAuth;
+    },
+  },
+
   actions: {
     async login({ commit }, { email, password }) {
       try {
         await firebase.auth().signInWithEmailAndPassword(email, password);
         await commit("changUserStatusAuth");
-        await commit("changeStatusLoginForm");
+        await commit("changeStatusLoginFormWindow");
       } catch (error) {
         commit("setError", error);
       }
     },
+
     async register(
-      { dispatch, commit },
+      { commit, dispatch },
       { email, password, firstName, lastName, street, house, flat, phone }
     ) {
       try {
@@ -28,7 +39,9 @@ export default {
             flat,
             phone
           );
+
         const userId = await dispatch("getUserId");
+
         await firebase.database().ref(`/users/${userId}/info`).set({
           email,
           password,
@@ -43,14 +56,29 @@ export default {
         commit("setError", error);
       }
     },
-    getUserId() {
-      const user = firebase.auth().currentUser;
+
+    async getUserId() {
+      const user = await firebase.auth().currentUser;
       return user ? user.uid : null;
     },
+
     async logout({ commit }) {
       await firebase.auth().signOut();
       await commit("changUserStatusAuth");
-      await commit("changeStatusExitWindow");
+      await commit("changeStatusConfirmWindow");
+
+      commit("clearInfo");
     },
+
+    async checkStatusUserAuth({ commit, dispatch, state }) {
+      const userId = await dispatch("getUserId");
+      if (userId && !state.userAuth) {
+        commit("changUserStatusAuth", userId);
+      }
+    },
+  },
+
+  getters: {
+    getStatusUserAuth: (state) => state.userAuth,
   },
 };
