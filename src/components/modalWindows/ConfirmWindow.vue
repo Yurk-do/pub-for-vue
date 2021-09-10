@@ -1,7 +1,7 @@
 <template>
   <div class="confirm-window-container">
     <ButtonClose @close-window="closeWindow" class="btn-close" />
-    <p class="confirm-window-title">Are you sure? {{name}}</p>
+    <p class="confirm-window-title">Are you sure? {{ name }}</p>
     <div class="btns-container">
       <ButtonForm :buttonName="'Yes'" @button-click="confirmExit" />
       <ButtonForm :buttonName="'No'" is-cancel @button-click="closeWindow" />
@@ -18,8 +18,11 @@ export default {
   components: { ButtonClose, ButtonForm },
   computed: {
     name() {
-      return this.$store.getters.info.firstName;
-    }
+      if (this.$store.getters.info) {
+        return this.$store.getters.info.firstName;
+      }
+      return "Unknown";
+    },
   },
   methods: {
     async confirmExit() {

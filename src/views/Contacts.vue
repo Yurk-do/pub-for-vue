@@ -1,23 +1,18 @@
 <template>
   <div>
-    <button @click="test">Test</button>
+    <Loader />
   </div>
 </template>
 <script>
+import Loader from "@/components/Loader.vue";
 export default {
   data() {
     return {};
   },
-  components: {},
-  methods: {
-    async test() {
-     const userId = await this.$store.dispatch("getUserId");
-     console.log(userId);
-     console.log(this.$store.state.userAuth)
-    }
-  }
+  computed: {},
+  components: { Loader },
+  methods: {},
 };
 </script>
-<style scoped="scss">
 
-</style>
+<style lang="scss" scoped></style>

@@ -34,18 +34,9 @@ import ButtonForm from "@/components/buttons/ButtonForm.vue";
 export default {
   name: "Delivery",
   data: () => ({
-    formData: {
-      ...this.$store.state.formData
-    },
+    formData: {},
   }),
-  async mounted() {
-    try {
-      this.$store.dispatch("getUserData");
-      console.log(this.$store.userData);
-    } catch (e) {
-      console.error(e);
-    }
-  },
+  async mounted() {},
   components: {
     UserNamesSection,
     UserAddressSection,
@@ -74,7 +65,7 @@ export default {
       }
     },
     test(event) {
-      console.log(event.target)
+      console.log(event.target);
     },
 
     addInputData(inputData) {

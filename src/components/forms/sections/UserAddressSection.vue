@@ -42,13 +42,16 @@
 <script>
 export default {
   name: "UserAddressSection",
-  data: () => ({
-    userAddressData: {
-      street: "",
-      house: "",
-      flat: "",
+  data: () => ({}),
+  computed: {
+    userAddressData() {
+      return {
+        street: this.$store.getters.info.street,
+        house: this.$store.getters.info.house,
+        flat: this.$store.getters.info.flat,
+      };
     },
-  }),
+  },
   methods: {
     inputAdddress() {
       this.$emit("input-user-address", this.userAddressData);

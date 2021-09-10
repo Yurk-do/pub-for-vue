@@ -1,10 +1,9 @@
 import firebase from "@firebase/app-compat";
 
 export default {
-  state: () => ({
+  state: {
     userAuth: false,
-  }),
-
+  },
   mutations: {
     changUserStatusAuth(state) {
       state.userAuth = !state.userAuth;
@@ -52,7 +51,27 @@ export default {
           flat,
           phone,
         });
+        // await fetch(
+        //   `https: //pub-for-vue.firebaseapp.com/users/${userId}/info`,
+        //   {
+        //     method: "POST",
+        //     headers: {
+        //       "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify(
+        //       email,
+        //       password,
+        //       firstName,
+        //       lastName,
+        //       street,
+        //       house,
+        //       flat,
+        //       phone
+        //     ),
+        //   }
+        // ).then((response) => response.json());
       } catch (error) {
+        console.log(error);
         commit("setError", error);
       }
     },

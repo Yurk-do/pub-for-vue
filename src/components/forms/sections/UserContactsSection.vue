@@ -38,12 +38,15 @@ export default {
       default: false,
     },
   },
-  data: () => ({
-    userContactsData: {
-      phone: "",
-      email: "",
+  data: () => ({}),
+  computed: {
+    userContactsData() {
+      return {
+        phone: this.$store.getters.info.phone,
+        email: this.$store.getters.info.email,
+      };
     },
-  }),
+  },
   methods: {
     inputContacts() {
       this.$emit("input-user-contacts", this.userContactsData);

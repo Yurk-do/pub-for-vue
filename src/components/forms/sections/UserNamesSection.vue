@@ -44,12 +44,15 @@ export default {
       default: false,
     },
   },
-  data: () => ({
-    userNamesData: {
-      firstName: "",
-      lastName: "",
+  data: () => ({}),
+  computed: {
+    userNamesData() {
+      return {
+        firstName: this.$store.getters.info.firstName,
+        lastName: this.$store.getters.info.lastName,
+      };
     },
-  }),
+  },
   methods: {
     inputNames() {
       this.$emit("input-user-names", this.userNamesData);

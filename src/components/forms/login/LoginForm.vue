@@ -1,7 +1,10 @@
 <template>
   <PopupContainer>
     <form class="login-form-container" @submit.prevent="submitHandler">
-      <ButtonClose @close-window="disactivateLoginFormWindow" class="btn-close" />
+      <ButtonClose
+        @close-window="disactivateLoginFormWindow"
+        class="btn-close"
+      />
       <h2 class="login-form-title">Login In</h2>
       <div class="login-form-input-container">
         <div class="input-box">
@@ -26,7 +29,10 @@
             @button-click="clearInput"
           />
         </div>
-        <div class="registration-link-container" @click="disactivateLoginFormWindow">
+        <div
+          class="registration-link-container"
+          @click="disactivateLoginFormWindow"
+        >
           <p>Not registered? Let do it now!</p>
           <router-link tag="p" to="/registration" class="registration-link"
             >Click here!</router-link
@@ -64,11 +70,13 @@ export default {
         email: this.email,
         password: this.password,
       };
+      
       try {
         await this.$store.dispatch("login", formData);
       } catch (e) {
         console.error(e);
       }
+      if (this.$route.path === "/registration") this.$router.push("/");
     },
   },
 };
