@@ -7,6 +7,7 @@
         "family": "Pale Ales",
         "description": "Like most amber beers, American amber ale is named after the golden to amber color this American version of English pale ale exhibits. The color is derived from the use of caramel and crystal malt additions, which are roasted to provide amber beers with the color, body and flavor many beer fans have come to appreciate. ",
         "country": "USA",
+        "price": "12$",
         "image": "amber-ale.jpg"
       },
       {
@@ -15,6 +16,7 @@
         "family": "Pale Ales",
         "description": "Like many others that have become known as classic American beers, the American pale ale can trace its roots to beer styles from abroad. The American pale ale beer was inspired by the English pale ale, replacing its English counterpart’s earthy, herbal hops with generous additions of boldly citrus and pine-like American varieties. ",
         "country": "USA",
+        "price": "12$",
         "image": "american-pale-ale.jpg"
       },
       {
@@ -23,6 +25,7 @@
         "family": "Pale Ales",
         "description": "One of the most approachable styles, a golden or blonde ale is an easy-drinking beer that is visually appealing and has no particularly dominating malt or hop characteristics. Rounded and smooth, it is an American classic known for its simplicity. Sometimes referred to as “golden ale.”",
         "country": "USA",
+        "price": "12$",
         "image": "blonde-ale.jpg"
       },
       {
@@ -31,6 +34,7 @@
         "family": "Pale Ales",
         "description": "The English-style bitter is a very sessionable, lower-alcohol, malt-driven style. Broad style description commonly associated with cask-conditioned beers. The light- to medium-bodied ordinary bitter is gold to copper in color, with a low residual malt sweetness.",
         "country": "England",
+        "price": "12$",
         "image": "english-style-bitter.jpg"
       },
       {
@@ -39,6 +43,7 @@
         "family": "Pale Ales",
         "description": "ESB stands for “extra special bitter.” This style is known for its balance and the interplay between malt and hop bitterness. English pale ales display earthy, herbal English-variety hop character. Medium to high hop bitterness, flavor and aroma should be evident.",
         "country": "England",
+        "price": "12$",
         "image": "english-style-pale-ale-esb.jpg"
       },
       {
@@ -47,6 +52,7 @@
         "family": "Dark Lagers",
         "description": "A widely available, sessionable craft beer style that showcases both malt and hops. Amber lagers are a medium-bodied lager with a toasty or caramel-like malt character. Hop bitterness can range from very low to medium-high.",
         "country": "USA",
+        "price": "12$",
         "image": "american-amber-lager.jpg"
       },
       {
@@ -55,6 +61,7 @@
         "family": "Dark Lagers",
         "description": "The German-style dunkel is a bottom-fermented lager style beer. The word “dunkel” is German for “dark,” and this dark beer style offers beer lovers balanced flavors of chocolate, bread crust and caramel. The dunkel is a classic German lager that craft brewers are fond of brewing and countless people across the world are fond of enjoying.",
         "country": "Germany",
+        "price": "12$",
         "image": "german-style-dunkel.jpg"
       },
       {
@@ -63,6 +70,7 @@
         "family": "Dark Lagers",
         "description": "A beer rich in malt with a balance of clean, hop bitterness, similar to the Vienna lager. Toasted bread or biscuit-like malt aroma and flavor is to be expected. Originating in Germany, this style was traditionally brewed in the spring (“Marzen” meaning “March”) and aged, or lagered, throughout the summer.",
         "country": "Germany",
+        "price": "12$",
         "image": "german-style-marzen-oktoberfest.jpg"
       },
       {
@@ -71,6 +79,7 @@
         "family": "Dark Lagers",
         "description": "Sometimes called black lagers, they may remind some of German-style dunkels, but schwarzbiers are drier, darker and more roast-oriented.These very dark brown to black beers have a surprisingly pale-colored foam head (not excessively brown) with good cling quality.",
         "country": "Germany",
+        "price": "12$",
         "image": "german-style-schwarzbier.jpg"
       },
       {
@@ -79,6 +88,7 @@
         "family": "Dark Lagers",
         "description": "Vienna Lager ranges from copper to reddish brown in color. The beer is characterized by malty aroma and slight malt sweetness. The malt aroma and flavor should have a notable degree of toasted and/or slightly roasted malt character. Hop bitterness is low to medium-low.",
         "country": "USA",
+        "price": "12$",
         "image": "vienna-style-lager.jpg"
       },
       {
@@ -87,6 +97,7 @@
         "family": "Brown Ales",
         "description": "Roasted malt, caramel-like and chocolate-like characters should be of medium intensity in both flavor and aroma for the American brown ale. American-style brown ales have evident low to medium hop flavor and aroma and medium to high hop bitterness. The history of this style dates back to U.S. homebrewers who were inspired by English-style brown ales and porters.",
         "country": "USA",
+        "price": "12$",
         "image": "american-brown-ale.jpg"
       },
       {
@@ -95,6 +106,7 @@
         "family": "Brown Ales",
         "description": "A bona fide English beer classic, English-style brown ale is easily one of the most iconic beer styles. Toasty, robust and with a bit of chocolate maltiness, the English brown ale is a meal in a glass, but offers unlimited opportunities for memorable food pairings.",
         "country": "England",
+        "price": "12$",
         "image": "english-style-brown-ale.jpg"
       },
       {
@@ -111,6 +123,7 @@
         "family": "India Pale Ales",
         "description": "Characterized by floral, fruity, citrus-like, piney or resinous American-variety hop character, the IPA beer style is all about hop flavor, aroma and bitterness. This has been the most-entered category at the Great American Beer Festival for more than a decade, and is the top-selling craft beer style in supermarkets and liquor stores across the U.S.",
         "country": "USA",
+        "price": "12$",
         "image": "american-india-pale-ale.jpg"
       },
       {
@@ -119,6 +132,7 @@
         "family": "India Pale Ales",
         "description": "Strong, bitter and completely misunderstood, the English India pale ale (or English IPA) bridges the gap between past and present. No other style represents modern craft brewing excitement quite like the IPA, and while this English beer differs widely from the American version it inspires.",
         "country": "England",
+        "price": "12$",
         "image": "english-style-india-pale-ale.jpg"
       },
       {
@@ -127,6 +141,7 @@
         "family": "India Pale Ales",
         "description": "American craft beer lovers are huge fans of the IPA. The quest for more of the India pale ale flavor has led them to the imperial India pale ale, a stronger version of the American IPA, which boasts even more hoppy flavor, aroma and bitterness. Imperial India pale ale is darker in color than the American IPA, substantially more bitter, and high in alcohol by volume.",
         "country": "USA",
+        "price": "12$",
         "image": "imperial-india-pale-ale.jpg"
       },
       {
@@ -135,6 +150,7 @@
         "family": "India Pale Ales",
         "description": "Emphasizing hop aroma and flavor without bracing bitterness, the New England IPA  leans heavily on late and dry hopping techniques to deliver a bursting juicy, tropical hop experience. The skillful balance of technique and ingredient selection, often including the addition of wheat or oats, lends an alluring haze to this popular take on the American IPA.",
         "country": "England",
+        "price": "12$",
         "image": "new-england-ipa.jpg"
       },
       {
@@ -143,6 +159,7 @@
         "family": " Wheat Beers",
         "description": "VPart of the “strong ale” category, the American-Style Wheat Wine Ale is not derived from grapes as its name might suggest. Made with at least 50 percent wheat malt, this full-bodied beer features bready and candy flavors, and finishes with a great deal of malty sweetness.",
         "country": "USA",
+        "price": "12$",
         "image": "american-style-wheat-wine-ale.jpg"
       },
       {
@@ -151,6 +168,7 @@
         "family": "Wheat Beers",
         "description": "American wheat beers are some of the most approachable beers in the craft beer world, and the versatility of wheat beer allows it to be combined with a variety of ingredients or enjoyed on its own alongside a wide variety of food options.",
         "country": "USA",
+        "price": "12$",
         "image": "american-wheat.jpg"
       },
       {
@@ -159,6 +177,7 @@
         "family": "Wheat Beers",
         "description": "Belgian-style witbier is brewed using unmalted wheat, sometimes oats and malted barley. Witbiers are spiced with coriander and orange peel. A style that dates back hundreds of years, it fell into relative obscurity until it was revived by Belgian brewer Pierre Celis in the 1960s.",
         "country": "Belgium",
+        "price": "12$",
         "image": "belgian-style-wit.jpg"
       },
       {
@@ -167,6 +186,7 @@
         "family": "Wheat Beers",
         "description": "Low in alcohol, refreshingly tart, and often served with a flavored syrup like Woodruff or raspberry, the Berliner-style Weisse presents a harmony between yeast and lactic acid. These beers are very pale in color, and may be cloudy as they are often unfiltered. Hops are not a feature of this style, but these beers often do showcase esters.",
         "country": "Germany",
+        "price": "12$",
         "image": "berliner-style-weisse.jpg"
       },
       {
@@ -175,6 +195,7 @@
         "family": "Wheat Beers",
         "description": "The German-style Dunkelweizen can be considered a cross between a German-style dunkel and a hefeweizen. Distinguished by its sweet maltiness and chocolate-like character, it can also have banana and clove (and occasionally vanilla or bubblegum) esters from weizen ale yeast.",
         "country": "Germany",
+        "price": "12$",
         "image": "german-style-dunkelweizen.jpg"
       },
       {
@@ -183,6 +204,7 @@
         "family": "Wheat Beers",
         "description": "Arguably one of the most recognizable beer styles, the German-style hefeweizen offers a striking beer experience thanks to the use of distinctive wheat malt, unique yeast and uncharateristic appearance. This wheat beer breaks from the German beer mold, showcasing yeast-driven fruit and spice as well as bearing an eye-catching mystique.",
         "country": "Germany",
+        "price": "12$",
         "image": "german-style-hefeweizen.jpg"
       },
       {
@@ -191,6 +213,7 @@
         "family": "Strong Ales",
         "description": "American barley wine ranges from amber to deep red/copper-garnet in color. A caramel and/or toffee aroma and flavor are often part of the malt character along with high residual malty sweetness. Complexity of alcohols is evident. Fruity-ester character is often high.",
         "country": "USA",
+        "price": "12$",
         "image": "american-barley-wine.jpg"
       },
       {
@@ -199,6 +222,7 @@
         "family": "Strong Ales",
         "description": "The use of American hops in the American imperial red ale lends to the perception of medium hop bitterness, flavor and aroma. Coupled with a solid malt profile, this should be a beer with balance between hop bitterness and malt sweetness. This is another example of modern American brewers taking an established style and boosting the flavor.",
         "country": "USA",
+        "price": "12$",
         "image": "american-imperial-red-ale.jpg"
       },
       {
@@ -207,6 +231,7 @@
         "family": "Strong Ales",
         "description": "The name “British-style barley wine” represents a group of strong ales that rival the strength and complexity of some of the world’s most celebrated beverages. This brawny, malt-forward beer style is often one of the strongest beer styles on any given beer menu, and showcases a complex melange of toffee and fruit flavors counterbalanced by warming alcohol and sturdy hop bitterness.",
         "country": "England",
+        "price": "12$",
         "image": "british-style-barley-wine-ale.jpg"
       },
       {
@@ -215,6 +240,7 @@
         "family": "Strong Ales",
         "description": "A distinctive quality of these ales is that their yeast undergoes an aging process (often for years) in bulk storage or through bottle conditioning, which contributes to a rich, wine-like and often sweet oxidation character. Old ales are copper-red to very dark in color. Complex estery character may emerge.",
         "country": "English",
+        "price": "12$",
         "image": "english-style-old-ale.jpg"
       }
     ],

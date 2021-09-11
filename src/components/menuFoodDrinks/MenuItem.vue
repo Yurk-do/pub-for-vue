@@ -21,11 +21,15 @@
       {{ mainDescriptionDrink }}
     </p>
     <div class="menu-item-order-section">
-      <button class="menu-item-order" :class="{ 'cancel-order': itemIsOrder }">
+      <button
+        class="menu-item-order"
+        :class="{ 'cancel-order': cancelIsActive }"
+        @click="changeStatusItemOrder"
+      >
         {{ nameButtonOrder }}
       </button>
       <div class="menu-item-price">
-        <span>Price: 14oz/{{ price }}</span>
+        <span>Price: 40oz/{{ price }}</span>
       </div>
     </div>
   </div>
@@ -47,6 +51,9 @@ export default {
     countryDrink: {
       type: String,
     },
+    price: {
+      type: String,
+    },
     imageUrl: {
       type: String,
     },
@@ -55,11 +62,20 @@ export default {
     },
   },
   computed: {
-    itemIsOrder() {
-      return false;
+    cancelIsActive() {
+      return true;
     },
     nameButtonOrder() {
-      return this.itemIsOrder ? "cancel order" : "order";
+      return this.cancelIsActive ? "cancel order" : "order";
+    },
+  },
+  methods: {
+    changeStatusItemOrder() {
+      if (!this.cancelIsActive) {
+        this.$emit("order-item");
+      } else {
+        this.$emit("delete-item");
+      }
     },
   },
 };
@@ -96,37 +112,36 @@ export default {
     color: yellow;
   }
 }
-
-.menu-item-order {
-  border: none;
-  border-radius: 30px;
-  font-size: 1.5em;
-  color: yellowgreen;
-  width: 150px;
-  height: 40px;
-  display: inline-block;
-  text-align: center;
-  line-height: 40px;
-  overflow: hidden;
-  transition: 0.5s;
-  box-shadow: -3px -1px 10px 5px rgba(196, 136, 121, 0.23);
-
-  &:hover {
-    background-color: #4651b7;
-    color: white;
-  }
-
-  &.cancel-order {
-    color: #b74646;
-    &:hover {
-      background-color: #b74646;
-      color: white;
-    }
-  }
-}
 .menu-item-order-section {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  .menu-item-order {
+    border: none;
+    border-radius: 30px;
+    font-size: 1.5em;
+    color: yellowgreen;
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+    overflow: hidden;
+    transition: 0.5s;
+    box-shadow: -3px -1px 10px 5px rgba(196, 136, 121, 0.23);
+
+    &:hover {
+      background-color: #4651b7;
+      color: white;
+    }
+
+    &.cancel-order {
+      color: #b74646;
+      &:hover {
+        background-color: #b74646;
+        color: white;
+      }
+    }
+  }
 }
 </style>

@@ -20,7 +20,7 @@
           </b-col>
         </b-form>
       </b-container>
-      <b-container class="items-for-order-container"> </b-container>
+      <OrderSection/>
     </b-container>
   </div>
 </template>
@@ -30,6 +30,7 @@ import UserAddressSection from "@/components/forms/sections/UserAddressSection.v
 import UserContactsSection from "@/components/forms/sections/UserContactsSection.vue";
 import DateTimeOrderSection from "@/components/forms/sections/DateTimeOrderSection.vue";
 import ButtonForm from "@/components/buttons/ButtonForm.vue";
+import OrderSection from "@/components/order/OrderSection.vue";
 
 export default {
   name: "Delivery",
@@ -43,6 +44,7 @@ export default {
     UserContactsSection,
     ButtonForm,
     DateTimeOrderSection,
+    OrderSection,
   },
   methods: {
     async submitHandler() {
@@ -84,7 +86,7 @@ export default {
   margin-top: 20px;
   width: 300px;
 }
-.items-for-order-container {
+.order-section {
   width: 100%;
   height: 50vh;
   background-color: white;

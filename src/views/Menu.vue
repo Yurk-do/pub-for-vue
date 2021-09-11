@@ -2,17 +2,22 @@
   <div class="menu-wrapper">
     <div class="main-container-menu">
       <h2 class="current-menu-title">Beer</h2>
-      <b-container class="d-flex flex-wrap menu-container">
+      <b-container
+        class="d-flex flex-wrap justify-content-between menu-container"
+      >
         <MenuItem
-          class="col-12 col-lg-6 p-3"
-          v-for="item in items"
+          class="col-12 col-lg-6 p-4"
+          v-for="(item) in items"
           :key="item.id"
           :titleDrink="item.title"
           :styleFamily="item.family"
           :mainDescriptionDrink="item.description"
           :countryDrink="item.country"
+          :price="item.price"
           :imageUrl="item.image"
           :categoryMenu="'beer'"
+          @order-item="orderItem(item)"
+          @delete-item="deleteItem(item)"
         />
       </b-container>
     </div>
@@ -24,6 +29,10 @@ import MenuItem from "@/components/menuFoodDrinks/MenuItem.vue";
 
 export default {
   name: "FoodMenu",
+  props: {},
+  async mounted() {
+    await this.$store.dispatch("requestMenuData");
+  },
   data: () => ({}),
   computed: {
     items() {
@@ -31,9 +40,16 @@ export default {
     },
   },
   components: { MenuItem },
-  props: {},
-  async mounted() {
-    await this.$store.dispatch("requestMenuData");
+
+  methods: {
+    orderItem(item) {
+      item = {...item};
+      item.quantity = 1;
+      this.$store.dispatch("addToOrderItemsList", item);
+    },
+    deleteItem(item) {
+      this.$store.dispatch("deleteFromOrderItemsList", item);
+    },
   },
 };
 </script>

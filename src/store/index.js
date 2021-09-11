@@ -4,6 +4,7 @@ import auth from "./auth";
 import windows from "./windows";
 import info from "./info";
 import menu from "./menu"
+import order from "./order.js"
 import firebase from "@firebase/app-compat";
 
 Vue.use(Vuex);
@@ -46,5 +47,6 @@ export default new Vuex.Store({
     auth,
     info,
     menu,
+    order,
   },
 });

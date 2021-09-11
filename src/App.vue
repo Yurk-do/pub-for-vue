@@ -38,13 +38,6 @@ export default {
       await this.$store.dispatch("fetchInfo");
     }
   },
-  //   async mounted() {
-  //   if (!Object.keys(this.$store.getters.info).length)
-  //   const userStatus = await this.$store.dispatch("checkStatusUserAuth");
-  //   if (!userStatus) {
-  //     await this.$store.dispatch("fetchInfo")
-  //   }
-  // },
   computed: {
     imagePath() {
       return PATHS_BACKGROUND_IMAGES[this.$route.name];
