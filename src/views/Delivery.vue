@@ -20,7 +20,7 @@
           </b-col>
         </b-form>
       </b-container>
-      <OrderSection/>
+      <OrderSection />
     </b-container>
   </div>
 </template>
@@ -65,9 +65,6 @@ export default {
       } catch (e) {
         console.log(e);
       }
-    },
-    test(event) {
-      console.log(event.target);
     },
 
     addInputData(inputData) {

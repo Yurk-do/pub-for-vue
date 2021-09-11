@@ -21,11 +21,7 @@
       {{ mainDescriptionDrink }}
     </p>
     <div class="menu-item-order-section">
-      <button
-        class="menu-item-order"
-        :class="{ 'cancel-order': cancelIsActive }"
-        @click="changeStatusItemOrder"
-      >
+      <button class="menu-item-order" @click="changeStatusItemOrder">
         {{ nameButtonOrder }}
       </button>
       <div class="menu-item-price">
@@ -62,9 +58,6 @@ export default {
     },
   },
   computed: {
-    cancelIsActive() {
-      return true;
-    },
     nameButtonOrder() {
       return this.cancelIsActive ? "cancel order" : "order";
     },
@@ -133,14 +126,6 @@ export default {
     &:hover {
       background-color: #4651b7;
       color: white;
-    }
-
-    &.cancel-order {
-      color: #b74646;
-      &:hover {
-        background-color: #b74646;
-        color: white;
-      }
     }
   }
 }

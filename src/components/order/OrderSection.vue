@@ -13,8 +13,7 @@ export default {
   name: "OrderSection",
   computed: {
     orderItems() {
-      console.log(this.$store.getters.orderItemsListShortDescription);
-      return this.$store.getters.orderItemsListShortDescription;
+      return this.$store.getters.getOrderItemsList;
     },
   },
 };

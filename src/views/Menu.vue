@@ -7,7 +7,7 @@
       >
         <MenuItem
           class="col-12 col-lg-6 p-4"
-          v-for="(item) in items"
+          v-for="item in items"
           :key="item.id"
           :titleDrink="item.title"
           :styleFamily="item.family"
@@ -15,7 +15,7 @@
           :countryDrink="item.country"
           :price="item.price"
           :imageUrl="item.image"
-          :categoryMenu="'beer'"
+          :categoryMenu="'whiskey'"
           @order-item="orderItem(item)"
           @delete-item="deleteItem(item)"
         />
@@ -36,14 +36,14 @@ export default {
   data: () => ({}),
   computed: {
     items() {
-      return this.$store.getters.getDataBeer;
+      return this.$store.getters.getDataWhiskey;
     },
   },
   components: { MenuItem },
 
   methods: {
     orderItem(item) {
-      item = {...item};
+      item = { ...item };
       item.quantity = 1;
       this.$store.dispatch("addToOrderItemsList", item);
     },

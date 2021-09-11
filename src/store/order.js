@@ -1,8 +1,6 @@
 export default {
   state: {
     orderItemsList: [],
-    totalPrice: 0,
-    productQuantity: 0,
   },
   mutations: {
     changeItemQuantity(state, dublicateItem) {
@@ -55,7 +53,7 @@ export default {
     },
   },
   getters: {
-    orderItemsListShortDescription(state) {
+    getOrderItemsList(state) {
       return state.orderItemsList;
     },
   },
