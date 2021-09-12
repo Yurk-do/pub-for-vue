@@ -85,4 +85,8 @@ body {
 #test {
   height: 3000px;
 }
+.new-page-enter-active,
+.new-page-leave-active {
+  transition: 2s;
+}
 </style>

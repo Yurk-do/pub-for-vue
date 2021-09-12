@@ -4,7 +4,7 @@
     <b-container class="d-flex">
       <b-container class="d-flex flex-row justify-content-between h-100">
         <b-form @submit.prevent="submitHandler">
-          <UserNamesSection @input-user-names="addInputData" @focus="test" />
+          <UserNamesSection @input-user-names="addInputData" />
           <UserAddressSection
             @input-user-address="addInputData"
             class="form-section"

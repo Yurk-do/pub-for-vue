@@ -19,6 +19,7 @@
           v-model="orderDateTime.time"
           :options="options"
           @change="inputDateTime"
+          class="form-control"
         ></b-form-select>
       </b-form-group>
     </b-col>
@@ -54,10 +55,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#time {
-  padding: 8px 8px;
-  outline: none;
-  border-radius: 5px;
-  background-color: white;
-}
+// #time {
+//   padding: 8px 8px;
+//   outline: none;
+//   border-radius: 5px;
+//   background-color: white;
+// }
 </style>

@@ -7,52 +7,54 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
-    path: "/menu",
-    name: "Menu",
+    path: "/menu/:category",
+    name: "drink menu",
     component: () => import("../views/Menu.vue"),
+    // params: { category: "beer" },
+    // children: [{ path: "beer" }, { path: "whiskey" }],
   },
   {
     path: "/specials",
-    name: "Specials",
+    name: "specials",
     component: () => import("../views/Specials.vue"),
   },
   {
     path: "/news",
-    name: "What's new",
+    name: "what's new",
     component: () => import("../views/News.vue"),
   },
   {
     path: "/events",
-    name: "Events",
+    name: "events",
     component: () => import("../views/Events.vue"),
   },
   {
     path: "/giftCards",
-    name: "Gift Cards",
+    name: "gift Cards",
     component: () => import("../views/GiftCards.vue"),
   },
   {
     path: "/faq",
-    name: "FAq",
+    name: "faq",
     component: () => import("../views/FAQ.vue"),
   },
   {
     path: "/contacts",
-    name: "Contacts",
+    name: "contacts",
     component: () => import("../views/Contacts.vue"),
   },
   {
     path: "/registration",
-    name: "Registration",
+    name: "registration",
     component: () => import("../views/Registration.vue"),
   },
   {
     path: "/delivery",
-    name: "Order for delivery",
+    name: "order for delivery",
     component: () => import("../views/Delivery.vue"),
   },
 ];

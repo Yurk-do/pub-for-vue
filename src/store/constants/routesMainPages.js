@@ -1,34 +1,29 @@
 export const routesMainPages = [
   {
-    path: "/",
-    name: "Home",
+    name: "home",
   },
   {
-    path: "/menu",
-    name: "Food & drink menu",
+    name: "drink menu",
+    params: {
+      category: "beer",
+    },
   },
   {
-    path: "/specials",
-    name: "Specials",
+    name: "specials",
   },
   {
-    path: "/news",
-    name: "What's new",
+    name: "what's new",
   },
   {
-    path: "/events",
-    name: "Events",
+    name: "events",
   },
   {
-    path: "/giftCards",
-    name: "Gift Cards",
+    name: "gift Cards",
   },
   {
-    path: "/faq",
-    name: "FAQ",
+    name: "faq",
   },
   {
-    path: "/contacts",
-    name: "Contacts",
+    name: "contacts",
   },
 ];

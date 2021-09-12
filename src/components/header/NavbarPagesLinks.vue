@@ -3,9 +3,10 @@
     <router-link
       class="navbar-link"
       v-for="link in links"
-      :to="link.path"
+      :to="{name: link.name, params: link.params}"
       :key="link.name"
       tag="div"
+      :exact="link.exact"
       >{{ link.name }}</router-link
     >
   </div>

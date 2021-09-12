@@ -33,7 +33,7 @@
 
 <script>
 export default {
-  name: "MenuItem",
+  name: "ItemMenu",
   props: {
     titleDrink: {
       type: String,
