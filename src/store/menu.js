@@ -1,22 +1,39 @@
 export default {
   state: {
     menuData: [],
+    menuDataFilter: [],
   },
   mutations: {
     updateMenuData(state, data) {
-      return (state.menuData = data);
+      state.menuData = data;
+    },
+    updateMenuDataByFilter(state, filterItems) {
+      state.menuDataFilter.push(...filterItems);
+      console.log(filterItems);
+      console.log(state.menuDataFilter);
     },
   },
+
   actions: {
     requestMenuData({ commit }) {
       fetch("http://localhost:3000/menu/")
         .then((response) => response.json())
         .then((data) => commit("updateMenuData", data));
     },
+    filterMenuData({ commit }, { allMenuItems, typeFilter, valueFilter }) {
+      typeFilter = typeFilter.toLowerCase();
+      const filterItems = allMenuItems.filter(
+        (item) => item[typeFilter] === valueFilter
+      );
+      commit("updateMenuDataByFilter", filterItems);
+    },
   },
   getters: {
-    getDataBeer: (state) => state.menuData.beer,
-    getDataWhiskey: (state) => state.menuData.whiskey,
-    getDataFood: (state) => state.menuData.food,
+    getDataMenuByCategory: (state) => (categoryMenu) => {
+      return state.menuData[categoryMenu];
+    },
+    getMenuDataFilter: (state) => {
+      return state.menuDataFilter;
+    },
   },
 };

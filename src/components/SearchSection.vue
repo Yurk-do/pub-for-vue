@@ -6,7 +6,7 @@
       </b-input-group-prepend>
       <b-form-input
         type="search"
-        :placeholder="searchCategoryMenu"
+        :placeholder="searchInputPlaceholder"
         class="search-section"
       ></b-form-input>
     </b-input-group>
@@ -17,7 +17,7 @@
 export default {
   name: "SearchSection",
   props: {
-    searchCategoryMenu: {
+    searchInputPlaceholder: {
       type: String,
       default: "Search",
     },

@@ -1,19 +1,18 @@
 <template>
   <b-container class="mb-3">
-    <b-dropdown size="md" text="Price" class="mt-2 mb-2 mr-2">
-      <b-dropdown-item-button>Action</b-dropdown-item-button>
-      <b-dropdown-item-button>Another action</b-dropdown-item-button>
-      <b-dropdown-item-button>Something else here</b-dropdown-item-button>
-    </b-dropdown>
-    <b-dropdown size="md" text="Type" class="m-2">
-      <b-dropdown-item-button>Action</b-dropdown-item-button>
-      <b-dropdown-item-button>Another action</b-dropdown-item-button>
-      <b-dropdown-item-button>Something else here</b-dropdown-item-button>
-    </b-dropdown>
-    <b-dropdown size="md" text="Strength" class="mt-2 mb-2 mr-2">
-      <b-dropdown-item-button>Action</b-dropdown-item-button>
-      <b-dropdown-item-button>Another action</b-dropdown-item-button>
-      <b-dropdown-item-button>Something else here</b-dropdown-item-button>
+    <b-dropdown
+      v-for="fieldCategory of fieldFiltersCategories"
+      :key="fieldCategory"
+      size="md"
+      :text="fieldCategory"
+      class="mt-2 mb-2 mr-2"
+    >
+      <b-dropdown-item-button
+        v-for="field in filterFields[fieldCategory]"
+        :key="field"
+        @click="choiceFieldForFilter($event, field, fieldCategory)"
+        >{{ field }}</b-dropdown-item-button
+      >
     </b-dropdown>
   </b-container>
 </template>
@@ -22,21 +21,29 @@
 export default {
   name: "FilterSection",
   props: {
-    searchCategoryMenu: {
-      type: String,
-      default: "Search",
+    filterFields: {
+      type: Object,
     },
   },
   data: () => ({
-    selected: null,
-    options: [
-      { value: null, text: "Please select an option" },
-      { value: "a", text: "This is First option" },
-      { value: "b", text: "Selected Option" },
-      { value: { C: "3PO" }, text: "This is an option with object value" },
-      { value: "d", text: "This one is disabled", disabled: true },
-    ],
+    allActiveDataFilter: {},
   }),
+  computed: {
+    fieldFiltersCategories() {
+      return Object.keys(this.filterFields);
+    },
+  },
+
+  methods: {
+    choiceFieldForFilter(event, field, fieldCategory) {
+      if (!(fieldCategory in this.allActiveDataFilter)) {
+        this.allActiveDataFilter[fieldCategory] = [];
+      }
+      this.allActiveDataFilter[fieldCategory].push(field);
+      event.target.disabled = true;
+      this.$emit("choice-field-for-filter", field, fieldCategory);
+    },
+  },
 };
 </script>
 

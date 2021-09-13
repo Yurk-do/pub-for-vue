@@ -5,27 +5,41 @@
       class="col-sm-11 fluid-sm d-flex flex-column menu-main-container pt-4"
     >
       <div class="menu-categories-titles-container">
-        <h3 class="link-category-menu" :class="{'active-category': categoryBeerIsActive}" @click="linkToBeer">Beer</h3>
-        <h3 class="link-category-menu" :class="{'active-category': !categoryBeerIsActive}" @click="linkToWhiskey">Whiskey</h3>
+        <h3
+          class="link-category-menu"
+          :class="{ 'active-category': categoryBeerIsActive }"
+          @click="linkToBeer"
+        >
+          Beer
+        </h3>
+        <h3
+          class="link-category-menu"
+          :class="{ 'active-category': !categoryBeerIsActive }"
+          @click="linkToWhiskey"
+        >
+          Whiskey
+        </h3>
       </div>
 
       <h2 class="title-current-category-menu">{{ categoryMenu }}</h2>
       <b-container class="d-flex justify-content-between mb-3">
         <SearchSection
-          :search-category-menu="searchCategoryMenu"
+          :search-input-placeholder="searchInputPlaceholder"
           class="col-10 col-lg-5"
         />
         <div class="col-1 col-lg-6 d-flex justify-content-end">
           <b-icon
-            @click="changeStatusFilter"
+            @click="changeStatusWindowFilter"
             icon="filter-square"
             font-scale="2"
           ></b-icon>
         </div>
       </b-container>
       <FilterSection
-        v-if="filterIsActive"
+        v-if="filterWindowIsActive"
         class="d-flex justify-content-start"
+        :filterFields="filterFields"
+        @choice-field-for-filter="choiceFieldForFilter"
       />
 
       <b-container
@@ -33,12 +47,13 @@
       >
         <ItemMenu
           class="col-12 col-lg-6 p-4"
-          v-for="item in items"
+          v-for="item in itemsForRender"
           :key="item.id"
           :titleDrink="item.title"
           :styleFamily="item.family"
           :mainDescriptionDrink="item.description"
           :countryDrink="item.country"
+          :volume="item.volume"
           :price="item.price"
           :imageUrl="item.image"
           :categoryMenu="categoryMenu"
@@ -53,6 +68,7 @@
 import FilterSection from "@/components/FilterSection.vue";
 import ItemMenu from "@/components/menuDrinks/ItemMenu.vue";
 import SearchSection from "@/components/SearchSection.vue";
+import FILTER_FIELDS from "@/store/constants/filterFields.js";
 
 export default {
   name: "FoodMenu",
@@ -60,7 +76,7 @@ export default {
   props: {},
   data() {
     return {
-      filterIsActive: false,
+      filterWindowIsActive: false,
     };
   },
   async mounted() {
@@ -68,23 +84,30 @@ export default {
   },
 
   computed: {
-    items() {
-      if (this.$route.params.category === "beer") {
-        return this.$store.getters.getDataBeer;
-      }
-      return this.$store.getters.getDataWhiskey;
+    itemsForRender() {
+      return this.itemsFromFilter.length !== 0
+        ? this.itemsFromFilter
+        : this.allMenuItems;
+    },
+    allMenuItems() {
+      return this.$store.getters.getDataMenuByCategory(this.categoryMenu);
+    },
+    itemsFromFilter() {
+      return this.$store.getters.getMenuDataFilter;
     },
     categoryMenu() {
       return this.$route.params.category;
     },
-    searchCategoryMenu() {
+    searchInputPlaceholder() {
       return "Search" + " " + this.categoryMenu;
     },
     categoryBeerIsActive() {
       return this.categoryMenu === "beer" ? true : false;
-    }
+    },
+    filterFields() {
+      return FILTER_FIELDS[this.categoryMenu];
+    },
   },
-
   methods: {
     orderItem(item) {
       item = { ...item };
@@ -102,8 +125,17 @@ export default {
       if (this.categoryMenu !== "beer")
         this.$router.push({ params: { category: "beer" } });
     },
-    changeStatusFilter() {
-      this.filterIsActive = !this.filterIsActive;
+    changeStatusWindowFilter() {
+      this.filterWindowIsActive = !this.filterWindowIsActive;
+    },
+
+    choiceFieldForFilter(field, fieldCategory) {
+      const filterData = {
+        allMenuItems: this.allMenuItems,
+        typeFilter: fieldCategory,
+        valueFilter: field,
+      };
+      this.$store.dispatch("filterMenuData", filterData);
     },
   },
 };

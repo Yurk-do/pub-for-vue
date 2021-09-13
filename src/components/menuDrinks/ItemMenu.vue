@@ -25,7 +25,7 @@
         {{ nameButtonOrder }}
       </button>
       <div class="menu-item-price">
-        <span>Price: 40oz/{{ price }}</span>
+        <span>Price: {{ volume }}/{{ price }}</span>
       </div>
     </div>
   </div>
@@ -48,6 +48,9 @@ export default {
       type: String,
     },
     price: {
+      type: String,
+    },
+    volume: {
       type: String,
     },
     imageUrl: {
