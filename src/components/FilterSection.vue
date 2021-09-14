@@ -1,19 +1,33 @@
 <template>
-  <b-container class="mb-3">
-    <b-dropdown
-      v-for="fieldCategory of fieldFiltersCategories"
-      :key="fieldCategory"
-      size="md"
-      :text="fieldCategory"
-      class="mt-2 mb-2 mr-2"
-    >
-      <b-dropdown-item-button
-        v-for="field in filterFields[fieldCategory]"
-        :key="field"
-        @click="choiceFieldForFilter($event, field, fieldCategory)"
-        >{{ field }}</b-dropdown-item-button
+  <b-container class="mb-3 d-flex flex-column">
+    <div class="mb-3">
+      <b-dropdown
+        v-for="fieldCategory of fieldFiltersCategories"
+        :key="fieldCategory"
+        size="md"
+        :text="fieldCategory"
+        class="mt-2 mb-2 mr-2"
       >
-    </b-dropdown>
+        <b-dropdown-item-button
+          v-for="field in filterFields[fieldCategory]"
+          :key="field"
+          @click="choiceFieldForFilter(fieldCategory, field)"
+          >{{ field }}</b-dropdown-item-button
+        >
+      </b-dropdown>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <p class="m-1">Filter by:</p>
+      <p
+        v-for="activeField in activeFields"
+        :key="activeField"
+        class="p-1 m-1 active-field"
+      >
+        {{ activeField }}
+      </p>
+      <p class="p-1 m-1 reset-button" v-if="activeFields.length" @click="resetFilterData">Reset</p>
+    </div>
   </b-container>
 </template>
 
@@ -25,26 +39,36 @@ export default {
       type: Object,
     },
   },
-  data: () => ({
-    allActiveDataFilter: {},
-  }),
+  data: () => ({}),
   computed: {
     fieldFiltersCategories() {
       return Object.keys(this.filterFields);
     },
+    activeFields() {
+      return this.$store.getters.getActiveFieldsForFilter;
+    },
   },
 
   methods: {
-    choiceFieldForFilter(event, field, fieldCategory) {
-      if (!(fieldCategory in this.allActiveDataFilter)) {
-        this.allActiveDataFilter[fieldCategory] = [];
-      }
-      this.allActiveDataFilter[fieldCategory].push(field);
-      event.target.disabled = true;
-      this.$emit("choice-field-for-filter", field, fieldCategory);
+    choiceFieldForFilter(fieldCategory, field) {
+      this.$emit("choice-field-for-filter", fieldCategory, field);
     },
+    resetFilterData() {
+      this.$store.commit("resetFilterData");
+    }
   },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.active-field {
+  background-color: blue;
+  cursor: pointer;
+}
+.reset-button {
+ 
+  background-color: red;
+  cursor: pointer;
+
+}
+</style>

@@ -68,7 +68,7 @@
 import FilterSection from "@/components/FilterSection.vue";
 import ItemMenu from "@/components/menuDrinks/ItemMenu.vue";
 import SearchSection from "@/components/SearchSection.vue";
-import FILTER_FIELDS from "@/store/constants/filterFields.js";
+import FILTER_FIELDS from "@/store/constants/filter/filterFields.js";
 
 export default {
   name: "FoodMenu",
@@ -85,9 +85,9 @@ export default {
 
   computed: {
     itemsForRender() {
-      return this.itemsFromFilter.length !== 0
-        ? this.itemsFromFilter
-        : this.allMenuItems;
+      return !this.itemsFromFilter?.length
+        ? this.allMenuItems
+        : this.itemsFromFilter;
     },
     allMenuItems() {
       return this.$store.getters.getDataMenuByCategory(this.categoryMenu);
@@ -120,22 +120,26 @@ export default {
     linkToWhiskey() {
       if (this.categoryMenu !== "whiskey")
         this.$router.push({ params: { category: "whiskey" } });
+      this.$store.commit("resetFilterData");
     },
     linkToBeer() {
       if (this.categoryMenu !== "beer")
         this.$router.push({ params: { category: "beer" } });
+      this.$store.commit("resetFilterData");
     },
     changeStatusWindowFilter() {
       this.filterWindowIsActive = !this.filterWindowIsActive;
     },
 
-    choiceFieldForFilter(field, fieldCategory) {
+    choiceFieldForFilter(fieldCategory, field) {
+      if (this.$store.getters.getActiveFieldsForFilter.includes(field)) return;
+
       const filterData = {
         allMenuItems: this.allMenuItems,
         typeFilter: fieldCategory,
         valueFilter: field,
       };
-      this.$store.dispatch("filterMenuData", filterData);
+      this.$store.dispatch("addToFilterMenuData", filterData);
     },
   },
 };

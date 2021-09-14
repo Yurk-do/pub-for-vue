@@ -1,7 +1,9 @@
+import calculateRange from "@/store/constants/filter/calculateRange.js";
 export default {
   state: {
     menuData: [],
     menuDataFilter: [],
+    activeFieldsForFilter: [],
   },
   mutations: {
     updateMenuData(state, data) {
@@ -9,23 +11,36 @@ export default {
     },
     updateMenuDataByFilter(state, filterItems) {
       state.menuDataFilter.push(...filterItems);
-      console.log(filterItems);
-      console.log(state.menuDataFilter);
+    },
+    resetFilterData(state) {
+      state.menuDataFilter = [];
+      state.activeFieldsForFilter = [];
+    },
+    updateActiveFieldsForFilter(state, { valueFilter }) {
+      if (!state.activeFieldsForFilter.includes(valueFilter)) {
+        state.activeFieldsForFilter.push(valueFilter);
+      }
     },
   },
-
   actions: {
     requestMenuData({ commit }) {
       fetch("http://localhost:3000/menu/")
         .then((response) => response.json())
         .then((data) => commit("updateMenuData", data));
     },
-    filterMenuData({ commit }, { allMenuItems, typeFilter, valueFilter }) {
-      typeFilter = typeFilter.toLowerCase();
-      const filterItems = allMenuItems.filter(
-        (item) => item[typeFilter] === valueFilter
-      );
+    addToFilterMenuData({ commit }, { allMenuItems, typeFilter, valueFilter }) {
+      let filterItems;
+      if (typeFilter === "country") {
+        filterItems = allMenuItems.filter(
+          (item) => item[typeFilter] === valueFilter
+        );
+      } else {
+        filterItems = allMenuItems.filter((item) =>
+          calculateRange(valueFilter, item[typeFilter])
+        );
+      }
       commit("updateMenuDataByFilter", filterItems);
+      commit("updateActiveFieldsForFilter", { valueFilter });
     },
   },
   getters: {
@@ -34,6 +49,9 @@ export default {
     },
     getMenuDataFilter: (state) => {
       return state.menuDataFilter;
+    },
+    getActiveFieldsForFilter: (state) => {
+      return state.activeFieldsForFilter;
     },
   },
 };
