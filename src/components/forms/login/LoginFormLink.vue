@@ -39,10 +39,10 @@ export default {
       this.LoginInHover = !this.LoginInHover;
     },
     activateLoginForm() {
-     if (!this.LoginInIsActive) {
-       this.$store.commit("changeStatusLoginFormWindow");
-        } else {
-       this.$store.commit("changeStatusConfirmWindow");
+      if (!this.LoginInIsActive) {
+        this.$store.commit("changeStatusLoginFormWindow");
+      } else {
+        this.$store.commit("changeStatusConfirmWindow");
       }
     },
   },

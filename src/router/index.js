@@ -14,8 +14,6 @@ const routes = [
     path: "/menu/:category",
     name: "drink menu",
     component: () => import("../views/Menu.vue"),
-    // params: { category: "beer" },
-    // children: [{ path: "beer" }, { path: "whiskey" }],
   },
   {
     path: "/specials",
@@ -31,21 +29,6 @@ const routes = [
     path: "/events",
     name: "events",
     component: () => import("../views/Events.vue"),
-  },
-  {
-    path: "/giftCards",
-    name: "gift Cards",
-    component: () => import("../views/GiftCards.vue"),
-  },
-  {
-    path: "/faq",
-    name: "faq",
-    component: () => import("../views/FAQ.vue"),
-  },
-  {
-    path: "/contacts",
-    name: "contacts",
-    component: () => import("../views/Contacts.vue"),
   },
   {
     path: "/registration",

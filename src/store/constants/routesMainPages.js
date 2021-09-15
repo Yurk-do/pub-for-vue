@@ -17,13 +17,4 @@ export const routesMainPages = [
   {
     name: "events",
   },
-  {
-    name: "gift Cards",
-  },
-  {
-    name: "faq",
-  },
-  {
-    name: "contacts",
-  },
 ];

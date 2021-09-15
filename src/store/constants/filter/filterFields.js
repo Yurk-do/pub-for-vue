@@ -18,3 +18,4 @@ export default {
     strength: ["until 45%", "from 45% to 50%", "more that 50%"],
   },
 };
+

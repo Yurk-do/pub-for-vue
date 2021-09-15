@@ -1,7 +1,7 @@
 <template>
   <b-icon
     icon="x"
-    scale="4"
+    scale="5"
     variant="white"
     id="icon"
     @click="disactivateWindow"

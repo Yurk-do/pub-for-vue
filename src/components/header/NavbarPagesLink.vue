@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: "NavbarPagesLinks",
+  name: "NavbarPagesLink",
   props: {
     links: {
       type: Array,

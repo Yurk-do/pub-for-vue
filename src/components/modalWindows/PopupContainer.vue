@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-container">
+  <div class="popup-container" :class="{black: isBlack}">
     <slot name="default"></slot>
   </div>
 </template>
@@ -7,6 +7,12 @@
 <script>
 export default {
   name: "PopupContainer",
+  props: {
+    isBlack: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
 
@@ -19,5 +25,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 100;
+}
+.black {
+  background: black;
 }
 </style>

@@ -2,6 +2,7 @@ export default {
   state: () => ({
     loginForm: false,
     confirmWindow: false,
+    burgerMenu: false,
   }),
   mutations: {
     changeStatusLoginFormWindow(state) {
@@ -10,9 +11,14 @@ export default {
     changeStatusConfirmWindow(state) {
       state.confirmWindow = !state.confirmWindow;
     },
+    changeStatusBurgerMenu(state) {
+      state.burgerMenu = !state.burgerMenu;
+      
+    }
   },
   getters: {
     getStatusLoginForm: (state) => state.loginForm,
     getStatusConfirmWindow: (state) => state.confirmWindow,
+    getStatusBurgerMenu: (state) => state.burgerMenu,
   },
 };

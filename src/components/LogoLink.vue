@@ -1,6 +1,6 @@
 <template>
   <router-link to="/" tag="div">
-    <img src="../../assets/images/logo.png" alt="logotype" name="logo image" />
+    <img src="@/assets/images/logo.png" alt="logotype" name="logo image" />
   </router-link>
 </template>
 
@@ -14,6 +14,7 @@ export default {
 img {
   width: 100%;
   height: 100%;
+  cursor: pointer;
 }
 </style>
->
+
