@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col class="col-8">
+    <b-col class="col-8 mb-3">
       <b-form-group id="input-group-phone" label="Phone:" label-for="phone">
         <b-form-input
           id="phone"
@@ -13,7 +13,7 @@
         </b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-8" v-if="emailActivated">
+    <b-col class="col-8 mb-3" v-if="emailActivated">
       <b-form-group id="input-group-email" label="Email" label-for="email">
         <b-form-input
           id="email"

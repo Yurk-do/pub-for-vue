@@ -1,6 +1,6 @@
 <template>
-  <b-container>
-    <b-container>
+  <b-container class="registration-container">
+    <b-container class="col-12 col-md-8">
       <h2 class="name-page">Registration</h2>
       <b-form @submit.prevent="submitHandler">
         <UserNamesSection
@@ -20,14 +20,14 @@
         />
         <UserPasswordSection
           @input-user-password="addInputData"
-          class="form-section"
+          confirm-password-activated
+          class="form-section d-flex flex-wrap"
         />
-        <b-col class="d-flex justify-content-center">
+        <b-col class="d-flex justify-content-center mb-5">
           <ButtonForm :button-name="'submit'" class="col-2" />
           <ButtonForm :button-name="'clear'" is-cancel class="col-2" />
         </b-col>
       </b-form>
-      <button @click="test">Test</button>
     </b-container>
   </b-container>
 </template>
@@ -62,9 +62,6 @@ export default {
     ButtonForm,
   },
   methods: {
-    test() {
-      console.log(this.userNamesData);
-    },
     async submitHandler() {
       const formData = { ...this.formData };
       this.$router.push("/");
@@ -84,14 +81,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.name-page {
-  margin: 30px 0px;
-  text-align: center;
-}
-.form-section {
-  margin-bottom: 40px;
-}
-.btns-section {
-  width: 300px;
+.registration-container {
+  color: white;
+  .name-page {
+    margin: 30px 0px;
+    text-align: center;
+    font-size: 50px;
+  }
+  .form-section {
+    margin-bottom: 40px;
+  }
+  .btns-section {
+    width: 300px;
+  }
 }
 </style>

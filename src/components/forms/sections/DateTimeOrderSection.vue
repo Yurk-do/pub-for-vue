@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col class="col-4">
+    <b-col class="col-6 col-md-5">
       <b-form-group id="input-group-date" label="Date:" label-for="date">
         <b-form-input
           id="date"
@@ -12,7 +12,7 @@
         ></b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-4">
+    <b-col class="col-6 col-md-5">
       <b-form-group id="input-group-time" label="Time:" label-for="time">
         <b-form-select
           id="time"

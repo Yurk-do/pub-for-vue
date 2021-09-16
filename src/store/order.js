@@ -3,15 +3,26 @@ export default {
     orderItemsList: [],
   },
   mutations: {
-    changeItemQuantity(state, dublicateItem) {
+    addSameItem(state, { dublicateItem, increment }) {
       state.orderItemsList.forEach((item) => {
         if (item.id === dublicateItem.id) {
-          item.quantity += 1;
-          item.price =
-            parseInt(item.price) + parseInt(dublicateItem.price) + "$";
+          if (increment) {
+            if (item.quantity === 0) {
+              item.price = dublicateItem.price;
+            } else {
+              item.price =
+                parseInt(item.price) +
+                parseInt(item.price) / item.quantity +
+                "$";
+              item.quantity += 1;
+            }
+          } else if (item.quantity !== 1) {
+            item.price =
+              parseInt(item.price) - parseInt(item.price) / item.quantity + "$";
+            item.quantity -= 1;
+          }
         }
       });
-      console.log(state.orderItemsList);
     },
 
     addItemToOrderList(state, orderItem) {
@@ -37,14 +48,13 @@ export default {
   },
   actions: {
     addToOrderItemsList({ state, commit }, orderItem) {
-      console.log(orderItem);
       if (
         state.orderItemsList.length === 0 ||
         !state.orderItemsList.find((item) => item.id === orderItem.id)
       ) {
         commit("addItemToOrderList", orderItem);
       } else {
-        commit("changeItemQuantity", orderItem);
+        commit("addSameItem", orderItem);
       }
     },
 

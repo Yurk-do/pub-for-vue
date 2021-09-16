@@ -1,7 +1,7 @@
 <template>
   <div>
     <BurgerMenu :links="links" v-if="burgerMenuIsActive" class="burger-menu" />
-    <div class="navbar" :class="{ 'navbar-opacity': opacity }">
+    <div class="navbar">
       <div class="navbar-wrapper">
         <LogoLink class="navbar-logo-container" />
         <div class="navbar-container">
@@ -64,9 +64,6 @@ export default {
     links: {
       type: Array,
       require: true,
-    },
-    opacity: {
-      type: Boolean,
     },
   },
   data() {
@@ -150,7 +147,6 @@ export default {
     display: flex;
     justify-content: space-between;
   }
-
 }
 .burger-menu-button {
   cursor: pointer;
@@ -182,9 +178,4 @@ export default {
     display: block;
   }
 }
-  .navbar-opacity {
-    background: black;
-    opacity: 1;
-    z-index: 1000;
-  }
 </style>

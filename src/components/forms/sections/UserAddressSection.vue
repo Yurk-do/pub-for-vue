@@ -12,7 +12,7 @@
         ></b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-md-2">
+    <b-col class="col-2">
       <b-form-group id="input-group-house" label="House:" label-for="street">
         <b-form-input
           id="house"
@@ -24,7 +24,7 @@
         </b-form-input>
       </b-form-group>
     </b-col>
-    <b-col class="col-md-2">
+    <b-col class="col-2">
       <b-form-group id="input-group-flat" label="Flat:" label-for="flat">
         <b-form-input
           id="flat"

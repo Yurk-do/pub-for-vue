@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="delivery-container">
     <h2 class="name-page">Delivery</h2>
-    <b-container class="d-flex">
-      <b-container class="d-flex flex-row justify-content-between h-100">
+    <b-container class="d-flex justify-content-between content-container">
+      <OrderSection class="order-section" />
+      <b-container class="d-flex">
         <b-form @submit.prevent="submitHandler">
           <UserNamesSection @input-user-names="addInputData" />
           <UserAddressSection
@@ -14,13 +15,12 @@
             class="form-section"
           />
           <DateTimeOrderSection @input-date-time="addInputData" />
-          <b-col class="d-flex justify-content-end">
+          <b-col class="d-flex justify-content-end mt-5">
             <ButtonForm :button-name="'submit'" class="col-4" />
             <ButtonForm :button-name="'clear'" is-cancel class="col-4" />
           </b-col>
         </b-form>
       </b-container>
-      <OrderSection />
     </b-container>
   </div>
 </template>
@@ -75,7 +75,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.delivery-container {
+  color: white;
+  margin-bottom: 50px;
+}
 .name-page {
+  font-size: 50px;
   margin: 30px 0px;
   text-align: center;
 }
@@ -85,7 +90,12 @@ export default {
 }
 .order-section {
   width: 100%;
-  height: 50vh;
-  background-color: white;
+  margin: 10px;
+  min-height: 200px;
+}
+@media (max-width: 1000px) {
+  .content-container {
+    flex-direction: column;
+  }
 }
 </style>

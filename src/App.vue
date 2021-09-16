@@ -2,11 +2,7 @@
   <div id="app">
     <LoginForm v-if="loginFormIsActive" />
     <section id="header-container" :style="{ 'background-image': imagePath }">
-      <VueNavbar
-        :links="routesMainPages"
-        v-if="navbarIsActive"
-        :opacity="navbarOpacity"
-      />
+      <VueNavbar :links="routesMainPages" v-if="navbarIsActive" />
       <div class="board-for-page-title" v-if="topBoardIsActive">
         <h2 class="title-board">{{ titlesForHeadersPages }}</h2>
       </div>
@@ -14,6 +10,7 @@
     <b-container>
       <router-view />
     </b-container>
+    <ButtonScroll v-if="!navbarIsActive" />
     <VueFooter />
   </div>
 </template>
@@ -24,17 +21,16 @@ import { PATHS_BACKGROUND_IMAGES } from "@/store/constants/pathBackgroundForTopP
 import LoginForm from "@/components/forms/login/LoginForm.vue";
 import TITLES_FOR_HEADERS from "@/store/constants/titlesForHeadersPages.js";
 import VueFooter from "@/components/footer/VueFooter.vue";
-
+import ButtonScroll from "@/components/buttons/ButtonScroll.vue";
 export default {
   name: "App",
-  components: { VueNavbar, LoginForm, VueFooter },
+  components: { VueNavbar, LoginForm, VueFooter, ButtonScroll },
   data() {
     return {
       routesMainPages,
       PATHS_BACKGROUND_IMAGES,
       topBoardIsActive: true,
       navbarIsActive: true,
-      navbarOpacity: false,
     };
   },
   async mounted() {
@@ -64,17 +60,9 @@ export default {
       console.log(currentScroll);
     },
     hadlerScroll() {
-      if (
-        pageYOffset > 200 &&
-        pageYOffset < 650 &&
-        !this.$store.getters.getStatusMenuBurger
-      ) {
+      if (pageYOffset > 300) {
         this.navbarIsActive = false;
-      } else if (pageYOffset > 650) {
-        this.navbarOpacity = true;
-        this.navbarIsActive = true;
       } else {
-        this.navbarOpacity = false;
         this.navbarIsActive = true;
       }
     },
@@ -126,7 +114,6 @@ body {
       color: white;
       font-size: 30px;
     }
-  
   }
 }
 </style>

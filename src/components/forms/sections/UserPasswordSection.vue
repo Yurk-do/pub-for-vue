@@ -1,6 +1,6 @@
 <template>
   <b-row>
-    <b-col>
+    <b-col class="mb-3">
       <b-form-group
         id="input-group-password"
         label="Password"
@@ -16,7 +16,7 @@
         >
         </b-form-input></b-form-group
     ></b-col>
-    <b-col v-if="confirmPasswordActivated"
+    <b-col class="mb-3" v-if="confirmPasswordActivated"
       ><b-form-group
         id="input-group-confirm-password"
         label="Confirm password:"
