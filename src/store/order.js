@@ -7,16 +7,10 @@ export default {
       state.orderItemsList.forEach((item) => {
         if (item.id === dublicateItem.id) {
           if (increment) {
-            if (item.quantity === 0) {
-              item.price = dublicateItem.price;
-            } else {
-              item.price =
-                parseInt(item.price) +
-                parseInt(item.price) / item.quantity +
-                "$";
-              item.quantity += 1;
-            }
-          } else if (item.quantity !== 1) {
+            item.price =
+              parseInt(item.price) + parseInt(item.price) / item.quantity + "$";
+            item.quantity += 1;
+          } else {
             item.price =
               parseInt(item.price) - parseInt(item.price) / item.quantity + "$";
             item.quantity -= 1;

@@ -1,27 +1,31 @@
 <template>
   <div class="order-container d-flex flex-column justify-content-between">
     <div>
-      <div
-        class="d-flex justify-content-between items-container"
-        v-for="item of orderItems"
-        :key="item.id"
-      >
-        <p class="title-container">{{ item.title }}</p>
-        <div class="quantity-container d-flex justify-content-center">
-          <div class="button-quantity-up" @click="changeQuantity($event, item)">
-            <b-icon icon="arrow-up" data-icon="up"></b-icon>
+      <div v-for="item of orderItems" :key="item.id">
+        <div
+          v-if="item.quantity !== 0"
+          class="d-flex justify-content-between items-container"
+        >
+          <p class="title-container">{{ item.title }}</p>
+          <div class="quantity-container d-flex justify-content-center">
+            <div
+              class="button-quantity-up"
+              @click="changeQuantity($event, item)"
+            >
+              <b-icon icon="arrow-up" data-icon="up"></b-icon>
+            </div>
+            <p>{{ item.quantity }}</p>
+            <div
+              class="button-quantity-down"
+              @click="changeQuantity($event, item)"
+            >
+              <b-icon icon="arrow-down" data-icon="down"></b-icon>
+            </div>
           </div>
-          <p>{{ item.quantity }}</p>
-          <div
-            class="button-quantity-down"
-            @click="changeQuantity($event, item)"
-          >
-            <b-icon icon="arrow-down" data-icon="down"></b-icon>
-          </div>
+          <p class="price-container d-flex justify-content-end">
+            {{ item.price }}
+          </p>
         </div>
-        <p class="price-container d-flex justify-content-end">
-          {{ item.price }}
-        </p>
       </div>
     </div>
 
@@ -54,7 +58,7 @@ export default {
   methods: {
     changeQuantity(event, dublicateItem) {
       let increment = event.target.dataset.icon === "up" ? true : false;
-      this.$store.commit("addSameItem", {dublicateItem, increment });
+      this.$store.commit("addSameItem", { dublicateItem, increment });
     },
   },
 };
