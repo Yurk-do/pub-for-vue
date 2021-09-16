@@ -14,7 +14,7 @@
             </div>
             <LoginFormLink />
             <ConfirmWindow v-if="confirmWindowIsActive" />
-            <ErrorWindow v-if="errorWindowisActive" />
+            <!-- <ErrorWindow v-if="errorWindowisActive" /> -->
           </div>
           <div class="navbar-pages-links-container">
             <NavbarPagesLink :links="links" />
@@ -44,7 +44,7 @@ import NavbarPagesLink from "@/components/header/NavbarPagesLink.vue";
 import LogoLink from "@/components/LogoLink.vue";
 import LoginFormLink from "@/components/forms/login/LoginFormLink.vue";
 import ConfirmWindow from "@/components/modalWindows/ConfirmWindow.vue";
-import ErrorWindow from "@/components/modalWindows/ErrorWindow.vue";
+// import ErrorWindow from "@/components/modalWindows/ErrorWindow.vue";
 import BurgerMenu from "@/components/header/BurgerMenu.vue";
 import ButtonClose from "@/components/buttons/ButtonClose.vue";
 
@@ -56,7 +56,7 @@ export default {
     LogoLink,
     LoginFormLink,
     ConfirmWindow,
-    ErrorWindow,
+   
     BurgerMenu,
     ButtonClose,
   },

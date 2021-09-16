@@ -1,11 +1,23 @@
 <template>
   <div class="confirm-window-container">
     <ButtonClose @close-window="closeWindow" class="btn-close" />
-    <p class="confirm-window-title">Are you sure? {{ name }}</p>
-    <div class="btns-container">
-      <ButtonForm :buttonName="'Yes'" @button-click="confirmExit" />
-      <ButtonForm :buttonName="'No'" is-cancel @button-click="closeWindow" />
-    </div>
+    <b-container
+      class="
+        d-flex
+        flex-column
+        justify-content-between
+        h-100
+        p-5
+        align-items-center
+        content-container
+      "
+    >
+      <p class="confirm-window-title">{{ name }}, are you sure ?</p>
+      <div class="btns-container">
+        <ButtonForm :buttonName="'Yes'" @button-click="confirmExit" />
+        <ButtonForm :buttonName="'No'" is-cancel @button-click="closeWindow" />
+      </div>
+    </b-container>
   </div>
 </template>
 
@@ -48,20 +60,23 @@ export default {
   -webkit-box-shadow: 2px 2px 21px 21px rgba(255, 255, 255, 0.54);
   -moz-box-shadow: 2px 2px 21px 21px rgba(255, 255, 255, 0.54);
   box-shadow: 2px 2px 21px 21px rgba(255, 255, 255, 0.54);
-}
-.btn-close {
-  padding-left: 80%;
-}
-
-.exit-window-title {
-  font-size: 25px;
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-.btns-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  .exit-window-title {
+    font-size: 25px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  .confirm-window-title {
+    font-size: 20px;
+  }
+  .btns-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>

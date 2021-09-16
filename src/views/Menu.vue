@@ -49,7 +49,6 @@
           @delete-item="deleteItem(item)"
         />
       </b-container>
-      <Pagination />
     </b-container>
   </b-container>
 </template>
@@ -57,8 +56,7 @@
 import FilterSection from "@/components/FilterSection.vue";
 import ItemMenu from "@/components/menuDrinks/ItemMenu.vue";
 import SearchSection from "@/components/SearchSection.vue";
-import FILTER_FIELDS from "@/store/constants/filter/filterFields.js";
-import Pagination from "@/components/Pagination.vue";
+import FILTER_FIELDS from "@/helpers/filter/filterFields.js";
 import SectionMenuTitlesCategories from "@/components/menuDrinks/SectionMenuTitlesCategories.vue";
 
 export default {
@@ -67,7 +65,6 @@ export default {
     ItemMenu,
     SearchSection,
     FilterSection,
-    Pagination,
     SectionMenuTitlesCategories,
   },
   props: {},
@@ -139,10 +136,10 @@ export default {
 <style lang="scss" scoped>
 .menu-container-wrapper {
   background-color: #444444;
+  padding-bottom: 30px;
 
-  .main-container-menu {
-    background-color: rgb(33, 37, 41);
-    color: white;
+  .menu-main-container {
+    margin-bottom: 30px;
   }
 
   .title-current-category-menu {

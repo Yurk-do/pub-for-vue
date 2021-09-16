@@ -1,4 +1,4 @@
-import calculateRange from "@/store/constants/filter/calculateRange.js";
+import calculateRange from "@/helpers/filter/calculateRange.js";
 export default {
   state: {
     menuData: [],

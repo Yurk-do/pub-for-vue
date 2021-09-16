@@ -1,8 +1,6 @@
-import firebase from "@firebase/app-compat";
-
 export default {
   state: {
-    info: {},
+    errorMessage: false,
   },
   mutations: {
     setInfo(state, info) {
@@ -21,11 +19,11 @@ export default {
         ).val();
         commit("setInfo", info);
       } catch (error) {
-        console.log(error);
+        console.log("ERRRRRRRRRRRRRRRROR",error);
       }
     },
   },
   getters: {
-    info: (state) => state.info,
+    getErrorMessage: (state) => state.errorMessage,
   },
 };

@@ -16,10 +16,10 @@
 </template>
 <script>
 import VueNavbar from "@/components/header/VueNavbar.vue";
-import { routesMainPages } from "@/store/constants/routesMainPages.js";
-import { PATHS_BACKGROUND_IMAGES } from "@/store/constants/pathBackgroundForTopPartPages.js";
+import { routesMainPages } from "@/helpers/routesMainPages.js";
+import { PATHS_BACKGROUND_IMAGES } from "@/helpers/pathBackgroundForTopPartPages.js";
 import LoginForm from "@/components/forms/login/LoginForm.vue";
-import TITLES_FOR_HEADERS from "@/store/constants/titlesForHeadersPages.js";
+import TITLES_FOR_HEADERS from "@/helpers/titlesForHeadersPages.js";
 import VueFooter from "@/components/footer/VueFooter.vue";
 import ButtonScroll from "@/components/buttons/ButtonScroll.vue";
 export default {

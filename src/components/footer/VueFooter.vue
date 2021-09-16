@@ -54,9 +54,9 @@
 </template>
 
 <script>
-import { CONTACTS } from "@/store/constants/contactInformation/contacts.js";
-import { WORKING_HOURS_DATA } from "@/store/constants/contactInformation/workingHours.js";
-import { SOCIAL_LINKS } from "@/store/constants/contactInformation/socialLinks.js";
+import { CONTACTS } from "@/helpers/contactInformation/contacts.js";
+import { WORKING_HOURS_DATA } from "@/helpers/contactInformation/workingHours.js";
+import { SOCIAL_LINKS } from "@/helpers/contactInformation/socialLinks.js";
 import WorkHour from "@/components/footer/WorkHour.vue";
 import ContactRow from "@/components/footer/ContactRow.vue";
 import LogoLink from "@/components/LogoLink.vue";
