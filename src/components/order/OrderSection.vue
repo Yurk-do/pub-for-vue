@@ -58,7 +58,11 @@ export default {
   methods: {
     changeQuantity(event, dublicateItem) {
       let increment = event.target.dataset.icon === "up" ? true : false;
-      this.$store.commit("addSameItem", { dublicateItem, increment });
+      if (!increment && dublicateItem.quantity === 1) {
+        this.$store.commit("deleteFromOrderItemsList", dublicateItem);
+      } else {
+        this.$store.commit("addSameItem", { dublicateItem, increment });
+      }
     },
   },
 };
@@ -85,12 +89,12 @@ export default {
     width: 35%;
 
     .button-quantity-up {
-      padding-right: 5px;
+      margin-right: 5px;
       cursor: pointer;
     }
 
     .button-quantity-down {
-      padding-left: 5px;
+      margin-left: 5px;
       cursor: pointer;
     }
   }

@@ -4,6 +4,7 @@ export default {
   },
   mutations: {
     addSameItem(state, { dublicateItem, increment }) {
+      console.log(dublicateItem, increment)
       state.orderItemsList.forEach((item) => {
         if (item.id === dublicateItem.id) {
           if (increment) {
@@ -41,14 +42,16 @@ export default {
     },
   },
   actions: {
-    addToOrderItemsList({ state, commit }, orderItem) {
+    addToOrderItemsList({ getters, commit }, orderItem) {
       if (
-        state.orderItemsList.length === 0 ||
-        !state.orderItemsList.find((item) => item.id === orderItem.id)
+        getters.getOrderItemsList.length === 0 ||
+        !getters.getOrderItemsList.find((item) => item.id === orderItem.id)
       ) {
         commit("addItemToOrderList", orderItem);
       } else {
-        commit("addSameItem", orderItem);
+        const increment = true;
+        const dublicateItem = orderItem;
+        commit("addSameItem", {dublicateItem, increment});
       }
     },
 
